@@ -13,7 +13,7 @@ void ihm(int* e1, int* e2)
 	line();
 
 	do {
-		printf("\nEntrez votre première valeur:\n");
+		printf("\nEntrez votre premi%cre valeur: ", 138); //	138 = é
 		fgets(number, sizeof number, stdin);
 
 		if ( *e1 = atoi(number) )
@@ -21,15 +21,15 @@ void ihm(int* e1, int* e2)
 			printf("Nombre: %d \n", *e1);
 			okNum = true;
 		}
-		else
-		{
-			printf("Incorrect: ");
+		else {
+
+			printf("\nIncorrect: ");
 			okNum = false;
 		}
 		fflush(stdin); // nettoie le buffer
 	} while( !okNum );
 	do {
-		printf("\nEntrez votre deuxième valeur:\n");
+		printf("\nEntrez votre deuxi%cme valeur: ", 138);
 		fgets(number, sizeof number, stdin);
 
 		if ( *e2 = atoi(number) )
@@ -39,13 +39,14 @@ void ihm(int* e1, int* e2)
 		}
 		else
 		{
+			printf("\nIncorrect: ");
 			okNum = false;
 		}
 		fflush(stdin);	// nettoie le buffer
 	} while( !okNum );
 
 	line();
-	printf("\n %d + %d \n\n", *e1, *e2);
+	printf("\n calcul %d + %d \n\n", *e1, *e2);
 	line();
 
 	/*if (SDL_Init(SDL_INIT_VIDEO) != 0 )
