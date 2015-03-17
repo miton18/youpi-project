@@ -2,7 +2,9 @@
 
 int main(int argc, char* argv[])
 {
-	int e1, e2;
+	//int e1, e2;
+	int *a,*b;
+	int resultat;
 
 	if( argc == 3)
 	{
@@ -12,7 +14,12 @@ int main(int argc, char* argv[])
 
 	}
 	else {
-		ihm( &e1, &e2);
+		*a=2;
+		*b=3;
+
+		//ihm( &e1, &e2);
+		resultat = calcul(a,b);
+		printf("Resultat = %d\n",resultat);
 	}
 	return 0;
 }
