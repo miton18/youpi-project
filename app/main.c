@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
 
 	}
 	else {
+		ihm(&e1, &e2);
 		resultat = calcul(&e1,&e2);
 		printf("Resultat = %d\n",resultat);
 	}
