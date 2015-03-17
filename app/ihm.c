@@ -2,6 +2,21 @@
 
 void ihm(int* e1, int* e2)
 {
+	char nulber[5];
+
+	line();
+	line();
+	printf("\n\tProgramme de dessin du bras Youpi\n");
+	printf("\n\t--Projet CIR3  ---  MORVAN / COLLIGNON\n\n");
+	line();
+	line();
+
+	printf("Entrez votre première valeur:\n");
+
+	fgets(number, sizeof number, stdin);
+
+
+
 	/*if (SDL_Init(SDL_INIT_VIDEO) != 0 )
 	{
 		fprintf(stdout,"Échec de l'initialisation de la SDL2 (%s)\n",SDL_GetError());
@@ -33,4 +48,8 @@ void ihm(int* e1, int* e2)
 		}
 	}
 	SDL_Quit();*/
+}
+void line()
+{
+	printf("#################################################\n");
 }
