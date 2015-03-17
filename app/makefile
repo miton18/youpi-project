@@ -11,7 +11,7 @@ calcul.o : calcul.c calcul.h
 	gcc -c calcul.c -o calcul.o
 
 conversion.o : conversion.c conversion.h
-	gcc -c conversion.c -o conversion.o
+	gcc -c conversion.c -o conversion.o -std=c99
 
 
 

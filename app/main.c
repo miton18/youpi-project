@@ -16,8 +16,9 @@ int main(int argc, char* argv[])
 		ihm(&e1, &e2);
 		resultat = calcul(e1,e2);
 		printf("Resultat = %d\n",resultat);
-		str =conversion( resultat );
-		printf("chaine : %s", &str);
+		str = conversion( resultat );
+
+		printf("\nchaine : %s", str);
 	}
 	return 0;
 }
