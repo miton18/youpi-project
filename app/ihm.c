@@ -29,7 +29,7 @@ void ihm(int* e1, int* e2)
 		fflush(stdin); // nettoie le buffer
 	} while( !okNum );
 	do {
-		printf(\n"Entrez votre deuxième valeur:\n");
+		printf("\nEntrez votre deuxième valeur:\n");
 		fgets(number, sizeof number, stdin);
 
 		if ( e2 = atoi(number) )
