@@ -1,5 +1,5 @@
-#ifndef IHM_H
-#define IHM_H
+#ifndef CONVERSION_H
+#define CONVERSION_H
 
 	#include <stdio.h>
 
