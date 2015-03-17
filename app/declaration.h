@@ -5,4 +5,5 @@
 	#include "calcul.h"
 	#include "ihm.h"
 	#include "conversion.h"
+	#include "lettresXYZ.h"
 #endif
