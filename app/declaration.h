@@ -1,5 +1,5 @@
-#ifndef IHM_H
-#define IHM_H
+#ifndef DECLARATION_H
+#define DECLARATION_H
 
 	#include <stdio.h>
 	#include "calcul.h"
