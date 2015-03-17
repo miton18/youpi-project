@@ -2,7 +2,7 @@
 
 char * conversion(int s)
 {
-	char * number[];
+	char * number[2];
 
 	int unite 		= s % 10;
 	int dizaine 	= s / 10 % 10;
