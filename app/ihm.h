@@ -6,8 +6,10 @@
 	#include <string.h>
 
 	/* FONCTION PRINCIPALE */
+
 	void ihm(int * e1, int * e2);
 	void line();
+	void robot();
 
 	/* TYPE BOOLEAN*/
 	typedef enum { false, true } bool;
