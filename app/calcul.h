@@ -1,3 +1,9 @@
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Header Fonction calcul
+   	Addition de deux entier
+   	-----------------------------------------------------*/
 #ifndef CALCUL_H
 #define CALCUL_H
 
