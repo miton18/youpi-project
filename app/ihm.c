@@ -23,7 +23,7 @@ void ihm(int* e1, int* e2)
 		}
 		else {
 
-			printf("\nIncorrect: ");
+			printf("\nIncorrect! ");
 			okNum = false;
 		}
 		fflush(stdin); // nettoie le buffer
@@ -39,7 +39,7 @@ void ihm(int* e1, int* e2)
 		}
 		else
 		{
-			printf("\nIncorrect: ");
+			printf("\nIncorrect! ");
 			okNum = false;
 		}
 		fflush(stdin);	// nettoie le buffer
