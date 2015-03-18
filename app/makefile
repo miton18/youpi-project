@@ -62,3 +62,12 @@ test-lettres_xyz : lettres_xyz.o test-lettres_xyz.o
 test-lettres_xyz.o: test-lettres_xyz.c
 	gcc -c test-lettres_xyz.c -o test-lettres_xyz.o -std=c99
 
+
+
+
+test-lettres_theta : lettres_theta.o test-lettres_theta.o
+	gcc lettres_theta.o test-lettres_theta.o -o ../release/test-lettres_theta
+
+test-lettres_theta.o: test-lettres_theta.c
+	gcc -c test-lettres_theta.c -o test-lettres_theta.o -std=c99
+
