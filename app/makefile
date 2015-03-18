@@ -13,6 +13,19 @@ calcul.o : calcul.c calcul.h
 conversion.o : conversion.c conversion.h
 	gcc -c conversion.c -o conversion.o -std=c99
 
+<<<<<<< HEAD
+lettresXYZ.o : lettresXYZ.c lettres_xyz.h
+	gcc -c lettresXYZ.c -o lettresXYZ.o -std=c99
+
+lettresTheta.o : lettresTheta.c lettres_theta.h
+	gcc -c lettresTheta.c -o lettresTheta.o -std=c99
+
+lettresMoteur.o : lettresMoteur.c lettres_moteur.h
+	gcc -c lettresMoteur.c -o lettresMoteur.o
+
+ecritureTraj.o : ecritureTraj.c ecriture_traj.h
+	gcc -c ecritureTraj.c -o ecritureTraj.o
+=======
 lettres_xyz.o : lettres_xyz.c lettres_xyz.h
 	gcc -c lettres_xyz.c -o lettres_xyz.o -std=c99
 
@@ -24,6 +37,7 @@ lettres_moteur.o : lettres_moteur.c lettres_moteur.h
 
 ecriture_traj.o : ecriture_traj.c ecriture_traj.h
 	gcc -c ecriture_traj.c -o ecriture_traj.o
+>>>>>>> d03161e736ff6b808b08f8d46f98a8481c72d612
 
 #CIBLE DE NETTOYAGE
 clean:
