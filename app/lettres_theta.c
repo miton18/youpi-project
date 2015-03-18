@@ -13,7 +13,7 @@ void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt
 	for (int i=0; i< np; i++) // tout les indices du/des tableaux
 	{
 		tt1[i]= (float) atan( - tz[i] / tx[i]);
-		tt2[i]= (float) ;
-		tt3[i]= (float) ;
+		tt2[i]= (float) -acos(1);
+		tt3[i]= (float) 2.0;
 	}
 }
