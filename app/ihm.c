@@ -1,3 +1,9 @@
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Fonction ihm
+   	Demande à l'utilisateur de rentrer 2 chiffres
+   	-----------------------------------------------------*/
 #include "ihm.h"
 
 void ihm(int* e1, int* e2)

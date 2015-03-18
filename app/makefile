@@ -1,5 +1,5 @@
-youpi-control : main.o ihm.o calcul.o conversion.o
-	gcc -Wextra main.o ihm.o calcul.o conversion.o -o ../release/youpi-project -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
+youpi-control : main.o ihm.o calcul.o conversion.o lettresXYZ.o lettresTheta.o lettresMoteur.o ecritureTraj.o
+	gcc -Wextra main.o ihm.o calcul.o conversion.o lettresXYZ.o lettresTheta.o lettresMoteur.o ecritureTraj.o -o ../release/youpi-project -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
 
 ihm.o : ihm.c ihm.h
 	gcc -c ihm.c -o ihm.o -std=c99
@@ -13,7 +13,17 @@ calcul.o : calcul.c calcul.h
 conversion.o : conversion.c conversion.h
 	gcc -c conversion.c -o conversion.o -std=c99
 
+lettresXYZ.o : lettresXYZ.c lettresXYZ.h
+	gcc -c lettresXYZ.c -o lettresXYZ.o -std=c99
 
+lettresTheta.o : lettresTheta.c lettresTheta.h
+	gcc -c lettresTheta.c -o lettresTheta.o -std=c99
+
+lettresMoteur.o : lettresMoteur.c lettresMoteur.h
+	gcc -c lettresMoteur.c -o lettresMoteur.o
+
+ecritureTraj.o : ecritureTraj.c ecritureTraj.h
+	gcc -c ecritureTraj.c -o ecritureTraj.o
 
 clean:
 	rm -f *.o *.gch

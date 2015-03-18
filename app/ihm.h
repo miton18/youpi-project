@@ -1,3 +1,9 @@
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Header Fonction ihm
+   	Demande à l'utilisateur de rentrer 2 chiffres
+   	-----------------------------------------------------*/
 #ifndef IHM_H
 #define IHM_H
 

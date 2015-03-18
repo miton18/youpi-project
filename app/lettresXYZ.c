@@ -1,6 +1,6 @@
-#ifndef LETTREXYZ_H
-#define LETTREXYZ_H
-
-	char* lettreXYZ();
-
-#endif
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Fonction lettresXYZ
+   	-----------------------------------------------------*/
+#include "lettresXYZ.h"
