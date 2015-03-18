@@ -7,7 +7,7 @@
 #define LETTRESXYZ_H
 
 
-	char* lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np);
+	void lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np);
 	
 	//Génération des points pour les differents chiffres romains
 	//return le nombre de point

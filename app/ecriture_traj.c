@@ -3,4 +3,4 @@
    			Morvan Guy-Yann
    	Fonction ecritureTraj
    	-----------------------------------------------------*/
-   	#include "ecritureTraj.h"
+   	#include "ecriture_traj.h"

@@ -49,5 +49,10 @@
    	}
 
    	int lettreX(float* x, float* y,float* z,int* tr){
+<<<<<<< HEAD
 
    	}
+=======
+   		return 1;
+   	}
+>>>>>>> d03161e736ff6b808b08f8d46f98a8481c72d612
