@@ -13,16 +13,16 @@ calcul.o : calcul.c calcul.h
 conversion.o : conversion.c conversion.h
 	gcc -c conversion.c -o conversion.o -std=c99
 
-lettresXYZ.o : lettresXYZ.c lettresXYZ.h
+lettresXYZ.o : lettresXYZ.c lettres_xyz.h
 	gcc -c lettresXYZ.c -o lettresXYZ.o -std=c99
 
-lettresTheta.o : lettresTheta.c lettresTheta.h
+lettresTheta.o : lettresTheta.c lettres_theta.h
 	gcc -c lettresTheta.c -o lettresTheta.o -std=c99
 
-lettresMoteur.o : lettresMoteur.c lettresMoteur.h
+lettresMoteur.o : lettresMoteur.c lettres_moteur.h
 	gcc -c lettresMoteur.c -o lettresMoteur.o
 
-ecritureTraj.o : ecritureTraj.c ecritureTraj.h
+ecritureTraj.o : ecritureTraj.c ecriture_traj.h
 	gcc -c ecritureTraj.c -o ecritureTraj.o
 
 clean:
