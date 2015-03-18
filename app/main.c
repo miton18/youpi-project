@@ -1,3 +1,8 @@
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Fonction principale main
+   	-----------------------------------------------------*/
 #include "declaration.h"
 
 
