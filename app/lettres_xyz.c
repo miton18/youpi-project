@@ -9,6 +9,7 @@
    	void lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np){
    		char temp;
    		int nptemp=0;
+         int indiceTableau=0;
 
    		for (int i = 0; i < sizeof(str); ++i)
    		{
@@ -16,44 +17,72 @@
    			switch (temp)
    			{
    				case 'I':
-   				nptemp=lettreI(tx,ty,tz,ttr);
+   				nptemp=lettreI(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'V':
-   				nptemp=lettreV(tx,ty,tz,ttr);
+   				nptemp=lettreV(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'X':
-   				nptemp=lettreX(tx,ty,tz,ttr);
+   				nptemp=lettreX(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'L':
-   				nptemp=lettreL(tx,ty,tz,ttr);
+   				nptemp=lettreL(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'C':
-   				nptemp=lettreC(tx,ty,tz,ttr);
+   				nptemp=lettreC(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'D':
-   				nptemp=lettreD(tx,ty,tz,ttr);
+   				nptemp=lettreD(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'M':
-   				nptemp=lettreM(tx,ty,tz,ttr);
+   				nptemp=lettreM(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
    			}
    			*np +=nptemp;
    		}
-   		return 0;
    	}
 
-   	int lettreX(float* x, float* y,float* z,int* tr){
+   	int lettreX(float* x, float* y,float* z,int* tr,int i,int *indice){
+         int nbp=200;
+         float hypo=sqrt(pow(9,2)+pow(11,2));
+         float pas=hypo*2/nbp;
+         for (float j = 0; j < hypo; j+=pas)
+         {
+            x[*indice]=(11/9)*j+(i*18);
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(i==(hypo-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         for (float j = 0; j < hypo;j+=pas )
+         {
+            x[*indice]=((-9*j/11)+11+(i*18));
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(i==(hypo-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
 
    	}
-         int lettreI(float* x, float* y,float* z,int* tr){}
-   int lettreM(float* x, float* y,float* z,int* tr){}
-   int lettreV(float* x, float* y,float* z,int* tr){}
-   int lettreC(float* x, float* y,float* z,int* tr){}
-   int lettreD(float* x, float* y,float* z,int* tr){}
-   int lettreL(float* x, float* y,float* z,int* tr){}
+      int lettreI(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreM(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreV(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreC(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreD(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreL(float* x, float* y,float* z,int* tr,int i,int *indice){}
