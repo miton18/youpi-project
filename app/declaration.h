@@ -10,8 +10,8 @@
 	#include "calcul.h"
 	#include "ihm.h"
 	#include "conversion.h"
-	#include "lettresXYZ.h"
-	#include "lettresTheta.h"
-	#include "lettresMoteur.h"
-	#include "ecritureTraj.h"
+	#include "lettres_xyz.h"
+	#include "lettres_theta.h"
+	#include "lettres_moteur.h"
+	#include "ecriture_traj.h"
 #endif

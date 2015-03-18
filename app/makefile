@@ -1,5 +1,5 @@
-youpi-control : main.o ihm.o calcul.o conversion.o lettresXYZ.o lettresTheta.o lettresMoteur.o ecritureTraj.o
-	gcc -Wextra main.o ihm.o calcul.o conversion.o lettresXYZ.o lettresTheta.o lettresMoteur.o ecritureTraj.o -o ../release/youpi-project -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
+youpi-control : main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o
+	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o -o ../release/youpi-project -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
 
 ihm.o : ihm.c ihm.h
 	gcc -c ihm.c -o ihm.o -std=c99
@@ -13,17 +13,17 @@ calcul.o : calcul.c calcul.h
 conversion.o : conversion.c conversion.h
 	gcc -c conversion.c -o conversion.o -std=c99
 
-lettresXYZ.o : lettresXYZ.c lettresXYZ.h
-	gcc -c lettresXYZ.c -o lettresXYZ.o -std=c99
+lettres_xyz.o : lettres_xyz.c lettres_xyz.h
+	gcc -c lettres_xyz.c -o lettres_xyz.o -std=c99
 
-lettresTheta.o : lettresTheta.c lettresTheta.h
-	gcc -c lettresTheta.c -o lettresTheta.o -std=c99
+lettres_theta.o : lettres_theta.c lettres_theta.h
+	gcc -c lettres_theta.c -o lettres_theta.o -std=c99
 
-lettresMoteur.o : lettresMoteur.c lettresMoteur.h
-	gcc -c lettresMoteur.c -o lettresMoteur.o
+lettres_moteur.o : lettres_moteur.c lettres_moteur.h
+	gcc -c lettres_moteur.c -o lettres_moteur.o
 
-ecritureTraj.o : ecritureTraj.c ecritureTraj.h
-	gcc -c ecritureTraj.c -o ecritureTraj.o
+ecriture_traj.o : ecriture_traj.c ecriture_traj.h
+	gcc -c ecriture_traj.c -o ecriture_traj.o
 
 clean:
 	rm -f *.o *.gch
