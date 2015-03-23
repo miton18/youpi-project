@@ -1,2 +1,2 @@
 # youpi-project
-Projet de controle de bras robotiser ( Youpi ) / CIR3
+Projet de contrôle de bras robotisé ( Youpi ) / CIR3
