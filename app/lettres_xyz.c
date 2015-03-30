@@ -10,8 +10,8 @@
    		char temp;
    		int nptemp=0;
          int indiceTableau=0;
-
-   		for (int i = 0; i < sizeof(str); ++i)
+         int i;
+   		for (i = 0; i < sizeof(str); ++i)
    		{
    			temp = str[i];
    			switch (temp)
@@ -52,7 +52,8 @@
          int nbp=200;
          float hypo=sqrt(pow(9,2)+pow(11,2));
          float pas=hypo*2/nbp;
-         for (float j = 0; j < hypo; j+=pas)
+         float j;
+         for (j = 0; j < hypo; j+=pas)
          {
             x[*indice]=(11/9)*j+(i*18);
             y[*indice]=50;
@@ -65,7 +66,7 @@
             }
             *indice++;
          }
-         for (float j = 0; j < hypo;j+=pas )
+         for (j = 0; j < hypo;j+=pas )
          {
             x[*indice]=((-9*j/11)+11+(i*18));
             y[*indice]=50;
@@ -83,8 +84,9 @@
       int lettreI(float* x, float* y,float* z,int* tr,int i,int *indice){
          int nbp=150;
          float pas = (11+9*2)/nbp;
+         float j;
          //points du trait du haut
-         for (float j = 0; j < 9; j+=pas)
+         for (j = 0; j < 9; j+=pas)
          {
             x[*indice]=11+(i*18);
             y[*indice]=50;
@@ -98,7 +100,7 @@
             *indice++;
          }
          //points du trait du bas
-         for (float j = 0; j < 9; j+=pas)
+         for (j = 0; j < 9; j+=pas)
          {
             x[*indice]=0+(i*18);
             y[*indice]=50;
@@ -112,7 +114,7 @@
             *indice++;
          }
          //points du trait du milieu
-         for (float j = 0; j < 11; j+=pas)
+         for (j = 0; j < 11; j+=pas)
          {
             x[*indice]=j+(i*18);
             y[*indice]=50;
