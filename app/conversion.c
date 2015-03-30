@@ -2,6 +2,15 @@
 
 char * conversion(int s)
 {
+	if( s < 0) {
+		return NULL;
+	}
+	//Test si le resultat est inferieur a 3999 (maximum pour affichage des chiffres romains)
+	else if ( s > 3999)
+	{
+		return NULL;
+	} //sinon envoi du résultat au main
+
 	char * number = malloc(sizeof (char) * 15);
 	int decoup[4];
 	decoup[0]	= s % 10;

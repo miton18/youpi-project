@@ -9,7 +9,7 @@
 
 void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt2, float* tt3)
 {
-	int i;
+	/*int i;
 
 	for ( i=0; i< np; i++) // tout les indices du/des tableaux
 	{
@@ -28,5 +28,5 @@ void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt
 							( pow(tx[i],2) + pow(tz[i],2) + pow((ty[i]-L1),2) )
 						)* 57.295779513082 + tt3[i]);
 	}
-	//printf("Angles: T1: %f, T2: %f, T3: %f", tt1[0], tt2[0], tt3[0]);
+	//printf("Angles: T1: %f, T2: %f, T3: %f", tt1[0], tt2[0], tt3[0]);*/
 }

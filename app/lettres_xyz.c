@@ -7,7 +7,7 @@
 #include "lettres_xyz.h"
 
    	void lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np){
-   		char temp;
+   		/*char temp;
    		int nptemp=0;
          int indiceTableau=0;
          int i;
@@ -45,7 +45,7 @@
    				break;
    			}
    			*np +=nptemp;
-   		}
+   		}*/
    	}
 
    	int lettreX(float* x, float* y,float* z,int* tr,int i,int *indice){
