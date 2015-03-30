@@ -1,12 +1,20 @@
 #include "lettres_moteur.h"
 
+/**
+	* Convertis 3 tableaux d'angles en ordre moteurs et les envoie dans
+	  le premier device connécté et reconnu
+  	* @param tt1, tt2, tt3 : tableaux d'angles
+	  @param ttr: trace, indique si le point doit etre relier avec le précédent
+	  @parma np:  nombre de points dans les tableaux
+  	* @return void
+*/
 void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 {
 	FT_STATUS ftStatus;
 	FT_HANDLE ftHandle;
 	DWORD numDevs, Flags, ID, Type, LocId, BytesWritten;
 	char Description[64], SerialNumber[16];
-	char * TxBuffer = malloc(sizeof(char) * 9); // Contains data to write to device
+	char * TxBuffer = malloc(sizeof(char) * 9); // Trame a envoyer
 
 	float ang_moteur[ NB_MOTEUR ];
 	float cptMoteur[ NB_MOTEUR ] = {0.0,0.0,0.0};
@@ -37,12 +45,12 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 				ang_moteur[1] = tt2[i];
 				ang_moteur[2] = tt3[i];
 
-				for( j=0; j< (NB_MOTEUR - 1) ; j++)
+				for( j=0; j< NB_MOTEUR ; j++)
 				{
 					if(ang_moteur[j] != cptMoteur[j]) // EVITE LES TRAMES INUTILES
 					{
 						createTrame( TxBuffer, cptMoteur[j], ang_moteur[j], j+1 );
-						printf("TRAME N %d: %s\n", j, TxBuffer);
+						printf("TRAME: %s\n", TxBuffer);
 						cptMoteur[j] = ang_moteur[j];
 					}
 
@@ -66,11 +74,21 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 		puts("Impossible de detecter les péripheriques.\n");
 	}*/
 }
+
+/**
+	* Construit une trame (char*) en fonction de l'indice du moteur de la position actuelle du moteur et de son angle de destination
+	* @param trame: chaine de caractere contenant l'ordre moteur
+	  @param cpt: angle actuel du moteur
+	  @param ang_dest: angle de destination
+	  @param nMot: numéro du moteur concerné
+	  @return void
+	*
+*/
 void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 {
 	const char 	* sep  		= ";";
 	int			  pas;
-	char 		* Cpas 		= "xxxx";
+	char 		* Cpas 		= malloc(sizeof(char) * 4);
 	char 		* Cmot 		= malloc(sizeof(char));
 	char 		* sgn  		= malloc(sizeof(char));
 	char 		* Cmille  	= malloc(sizeof(char));
@@ -82,7 +100,6 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 	strcpy( trame,  Cmot);  					// NUMERO DE MOTEUR
 	strcat( trame, sep);			 			// SEPARATEUR
 
-
 	if( (ang_dest - cpt) < 0 ) {				//SIGNE
 		sprintf(trame, "%s%c", trame, '-');
 	}
@@ -92,11 +109,11 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 
 	if( nMot == 1) //moteur avec 0.326
 	{
-		pas=( ((ang_dest - cpt) /0.0326 ) + 0.5);
+		pas=abs( ((ang_dest - cpt) /0.0326 ) + 0.5);
 
 	}
 	else {
-		pas=( ((ang_dest - cpt) /0.0281 ) + 0.5);
+		pas=abs( ((ang_dest - cpt) /0.0281 ) + 0.5);
 	}
 
 	toStr(Cunit,  pas % 10);
@@ -111,8 +128,15 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 	sprintf(trame, "%s%c", trame, '\r');
 	sprintf(trame, "%s%c", trame, '\n');
 }
-void toStr(char *str, int value) {
 
+/**
+	* Converti un int en (char *)
+	* @param str: chaine de caracteres de destination
+	  @param value: entier a convertir
+	* @return void
+*/
+void toStr(char *str, int value)
+{
     sprintf(str, "%d", value);
     return ;
 }
