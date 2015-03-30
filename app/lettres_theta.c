@@ -10,10 +10,11 @@
 
 void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt2, float* tt3)
 {
+	int i;
 
-	for (int i=0; i< np; i++) // tout les indices du/des tableaux
+	for ( i=0; i< np; i++) // tout les indices du/des tableaux
 	{
-		//printf("x: %f y: %f z: %f\n", tx[i], ty[i], tz[i]); //OK
+		printf("LETTRETHETA x: %f y: %f z: %f\n", tx[i], ty[i], tz[i]); //OK
 
 		tt1[i]= atan( - tz[i] / tx[i]) * 57.295779513082;
 		tt3[i]= acos(
@@ -28,5 +29,5 @@ void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt
 							( pow(tx[i],2) + pow(tz[i],2) + pow((ty[i]-L1),2) )
 						)* 57.295779513082 + tt3[i]);
 	}
-	printf("#######TEST: 1: %f, 2: %f, 3: %f", tt1[0], tt2[0], tt3[0]);
+	//printf("Angles: T1: %f, T2: %f, T3: %f", tt1[0], tt2[0], tt3[0]);
 }
