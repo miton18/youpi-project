@@ -8,6 +8,7 @@
 
 	#include <stdlib.h>
 	#include <math.h>
+	#include <stdio.h>
 
 	#define L1 175
 	#define L2 160

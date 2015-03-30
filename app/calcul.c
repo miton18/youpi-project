@@ -6,10 +6,10 @@
    	-----------------------------------------------------*/
 #include "calcul.h"
 
-int calcul(int a, int b)
+int calcul(int e1, int e2)
 {
 	int resultat = 0;
-	resultat = a + b;
+	resultat = e1 + e2;
 	//Test si le résultat est positif
 	if (resultat <= 0)
 	{

@@ -8,6 +8,6 @@
 #define CALCUL_H
 
 	#include <stdio.h>
-	int calcul(int a, int b);
+	int calcul(int e1, int e2);
 
 #endif
