@@ -7,6 +7,8 @@
 #define LETTRESXYZ_H
 
    	#include <math.h>
+   	#include <stdio.h>
+   	#include <string.h>
 	void lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np);
 	
 	//Génération des points pour les differents chiffres romains
