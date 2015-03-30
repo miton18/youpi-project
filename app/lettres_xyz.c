@@ -80,7 +80,52 @@
          }
 
    	}
-      int lettreI(float* x, float* y,float* z,int* tr,int i,int *indice){}
+      int lettreI(float* x, float* y,float* z,int* tr,int i,int *indice){
+         int nbp=150;
+         float pas = (11+9*2)/nbp;
+         //points du trait du haut
+         for (float j = 0; j < 9; j+=pas)
+         {
+            x[*indice]=11+(i*18);
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         //points du trait du bas
+         for (float j = 0; j < 9; j+=pas)
+         {
+            x[*indice]=0+(i*18);
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         //points du trait du milieu
+         for (float j = 0; j < 11; j+=pas)
+         {
+            x[*indice]=j+(i*18);
+            y[*indice]=50;
+            z[*indice]=4.5+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+      }
       int lettreM(float* x, float* y,float* z,int* tr,int i,int *indice){}
       int lettreV(float* x, float* y,float* z,int* tr,int i,int *indice){}
       int lettreC(float* x, float* y,float* z,int* tr,int i,int *indice){}
