@@ -55,9 +55,9 @@
          float j;
          for (j = 0; j < hypo; j+=pas)
          {
-            x[*indice]=(11/9)*j+(i*18);
+            x[*indice]=(11/9)*j+145;
             y[*indice]=50;
-            z[*indice]=j+(i*18);
+            z[*indice]=j+(i*18)-139.5;
             if(i==(hypo-pas)){
                tr[*indice]=0;
             }
@@ -68,7 +68,7 @@
          }
          for (j = 0; j < hypo;j+=pas )
          {
-            x[*indice]=((-9*j/11)+11+(i*18));
+            x[*indice]=((-11*j/9)+11)+145;
             y[*indice]=50;
             z[*indice]=j+(i*18);
             if(i==(hypo-pas)){
@@ -88,9 +88,9 @@
          //points du trait du haut
          for (j = 0; j < 9; j+=pas)
          {
-            x[*indice]=11+(i*18);
+            x[*indice]=11+145;
             y[*indice]=50;
-            z[*indice]=j+(i*18);
+            z[*indice]=j+(i*18)-139.5;
             if(j==(9-pas)){
                tr[*indice]=0;
             }
@@ -102,7 +102,7 @@
          //points du trait du bas
          for (j = 0; j < 9; j+=pas)
          {
-            x[*indice]=0+(i*18);
+            x[*indice]=0+145;
             y[*indice]=50;
             z[*indice]=j+(i*18);
             if(j==(9-pas)){
@@ -116,9 +116,65 @@
          //points du trait du milieu
          for (j = 0; j < 11; j+=pas)
          {
-            x[*indice]=j+(i*18);
+            x[*indice]=j+145;
             y[*indice]=50;
             z[*indice]=4.5+(i*18);
+            tr[*indice]=1;
+            *indice++;
+         }
+      }
+      int lettreM(float* x, float* y,float* z,int* tr,int i,int *indice){
+         int nbp=200;
+         float pas = (11*2)/nbp;
+         float j;
+         //points du 1er trait vertical
+         for (j = 0; j < 9; j+=pas)
+         {
+            x[*indice]=j+145;
+            y[*indice]=50;
+            z[*indice]=0+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         //points du 1er trait diagonal
+         for (j = 0; j < 9; j+=pas)
+         {
+            x[*indice]=(-2*11/9)+11+145;
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         //points du 2eme trait diagonal
+         for (j = 0; j < 11; j+=pas)
+         {
+            x[*indice]=(2*11/9)-11+145;
+            y[*indice]=50;
+            z[*indice]=j+(i*18);
+            if(j==(9-pas)){
+               tr[*indice]=0;
+            }
+            else {
+               tr[*indice]=1;
+            }
+            *indice++;
+         }
+         //points du 2em trait vertical
+         for (j = 0; j < 11; j+=pas)
+         {
+            x[*indice]=j+145;
+            y[*indice]=50;
+            z[*indice]=9+(i*18);
             if(j==(9-pas)){
                tr[*indice]=0;
             }
@@ -128,7 +184,6 @@
             *indice++;
          }
       }
-      int lettreM(float* x, float* y,float* z,int* tr,int i,int *indice){}
       int lettreV(float* x, float* y,float* z,int* tr,int i,int *indice){}
       int lettreC(float* x, float* y,float* z,int* tr,int i,int *indice){}
       int lettreD(float* x, float* y,float* z,int* tr,int i,int *indice){}
