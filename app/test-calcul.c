@@ -1,5 +1,7 @@
 #include "calcul.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char* argv[]) {
 
@@ -8,5 +10,5 @@ int main(int argc, char* argv[]) {
 
 	int test = calcul( a, b );
 
-	printf("\nVALEUR DE RETOUR: str=%d\n", test);
+	printf("\nVALEUR DE RETOUR: %d\n", test);
 }

@@ -23,11 +23,6 @@ int main(int argc, char* argv[]) {
 	float * tt3 = malloc( sizeof(float) * 400 * 16 );
 
 
-
-
-
-
-
 	lettresTheta(tx, ty, tz, 1, tt1, tt2, tt3);
 
 	printf("\nVALEUR DE RETOUR: T1: %f T2: %f T3: %f\n", tt1[0], tt2[0], tt3[0]);
