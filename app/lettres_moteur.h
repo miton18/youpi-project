@@ -1,14 +1,21 @@
 /* ------------------------------------------------------
-   Auteur : Collignon Rémi
+	Auteur : Collignon Rémi
    			Morvan Guy-Yann
-   	Header Fonction lettresMoteur
-   	-----------------------------------------------------*/
+	Header Fonction lettresMoteur
+-----------------------------------------------------*/
 
-   	#ifndef LETTRESMOTEUR
-   	#define LETTRESMOTEUR 
+#ifndef LETTRESMOTEUR
+#define LETTRESMOTEUR
 
-		#include <stdio.h>
-		#include <windows.h>
-		#include "ftd2xx.h"
-   		void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np);
-   	#endif
+	#include <stdio.h>
+	#include <string.h>
+	#include <stdlib.h>
+	#include <windows.h>
+	#include "ftd2xx.h"
+
+	#define NB_MOTEUR 3
+
+   	void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np);
+	void createTrame( char * trame, float cpt , float ang_dest, int nMot );
+	void toStr(char *str, int value);
+#endif
