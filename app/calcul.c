@@ -11,7 +11,6 @@ int calcul(int e1, int e2)
 	int resultat = 0;
 	resultat = e1 + e2;
 
-
 	return resultat;
 
 }

@@ -7,7 +7,7 @@
 
 void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 {
-	/*FILE * fichier = NULL;
+	FILE * fichier = NULL;
 	char * rep;
 	int i;
 
@@ -34,5 +34,5 @@ void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 	}
 
 	fclose(fichier);
-	printf("écriture du fichier terminée!");*/
+	printf("écriture du fichier terminée!");
 }
