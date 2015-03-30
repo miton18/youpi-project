@@ -48,8 +48,8 @@ char * conversion(int s)
 		s -= XL;
 		strcat( number, "XL");
 	}
-	while(s - X >= 0){
-		s -= X;
+	while(s - monX >= 0){
+		s -= monX;
 		strcat( number, "X");
 	}
 	while(s - IX >= 0){
@@ -70,4 +70,6 @@ char * conversion(int s)
 	}
 
 	return  number;
+	/*char * romain ="";
+	return romain;*/
 }

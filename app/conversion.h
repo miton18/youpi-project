@@ -11,7 +11,7 @@
 	#define IV 4
 	#define V 5
 	#define IX 9
-	#define X 10
+	#define monX 10
 	#define XL 40
 	#define L 50
 	#define XC 90

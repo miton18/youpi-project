@@ -3,13 +3,13 @@
 ####################################################################################################
 
 youpi-control : main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o
-	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o -o ../release/youpi-project -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
+	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o -o ../release/youpi-project -L./lib -I./include -lftd2xx -lmingw32 -lSDL2main -lSDL2
 
 ####################################################################################################
 #									TOUT LES PROGRAMMES											   #
 ####################################################################################################
 
-all: youpi-control test-ihm test-conversion test-calcul test-lettres_xyz test-lettres_theta
+all: youpi-control test-ihm test-conversion test-calcul test-lettres_xyz test-lettres_theta test-lettres_moteur
 
 ####################################################################################################
 #									DEPENDANCES													   #
@@ -33,7 +33,7 @@ lettres_xyz.o : lettres_xyz.c lettres_xyz.h
 lettres_theta.o : lettres_theta.c lettres_theta.h
 	gcc -c lettres_theta.c -o lettres_theta.o
 
-lettres_moteur.o : lettres_moteur.c lettres_moteur.h
+lettres_moteur.o : lettres_moteur.c lettres_moteur.h ftd2xx.h
 	gcc -c lettres_moteur.c -o lettres_moteur.o
 
 ecriture_traj.o : ecriture_traj.c ecriture_traj.h
@@ -90,4 +90,11 @@ test-ecriture_traj : ecriture_traj.o test-ecriture_traj.o
 
 test-ecriture_traj.o : test-ecriture_traj.c
 	gcc -c test-ecriture_traj.c-o test-ecriture_traj.o
+
+
+test-lettres_moteur : lettres_moteur.o test-lettres_moteur.o
+	gcc lettres_moteur.o test-lettres_moteur.o -o ../release/test-lettres_moteur  -L./lib -lftd2xx
+
+test-lettres_moteur.o : test-lettres_moteur.c
+	gcc -c test-lettres_moteur.c -o test-lettres_moteur.o
 
