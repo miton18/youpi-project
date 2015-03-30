@@ -19,10 +19,10 @@ ihm.o : ihm.c ihm.h
 	gcc -c ihm.c -o ihm.o -std=c99
 
 main.o : main.c declaration.h
-	gcc -c main.c -o main.o
+	gcc -c main.c -o main.o -std=c99
 
 calcul.o : calcul.c calcul.h
-	gcc -c calcul.c -o calcul.o
+	gcc -c calcul.c -o calcul.o -std=c99
 
 conversion.o : conversion.c conversion.h
 	gcc -c conversion.c -o conversion.o -std=c99
@@ -34,7 +34,7 @@ lettres_theta.o : lettres_theta.c lettres_theta.h
 	gcc -c lettres_theta.c -o lettres_theta.o -std=c99
 
 lettres_moteur.o : lettres_moteur.c lettres_moteur.h
-	gcc -c lettres_moteur.c -o lettres_moteur.o
+	gcc -c lettres_moteur.c -o lettres_moteur.o -std=c99
 
 ecriture_traj.o : ecriture_traj.c ecriture_traj.h
 	gcc -c ecriture_traj.c -o ecriture_traj.o -std=c99
@@ -54,21 +54,21 @@ test-ihm : ihm.o test-ihm.o
 	gcc ihm.o test-ihm.o -o ../release/test-ihm
 
 test-ihm.o: test-ihm.c
-	gcc -c test-ihm.c -o test-ihm.o
+	gcc -c test-ihm.c -o test-ihm.o -std=c99
 
 
 test-conversion : conversion.o test-conversion.o
 	gcc conversion.o test-conversion.o -o ../release/test-conversion
 
 test-conversion.o: test-conversion.c
-	gcc -c test-conversion.c -o test-conversion.o
+	gcc -c test-conversion.c -o test-conversion.o -std=c99
 
 
 test-calcul : calcul.o test-calcul.o
 	gcc calcul.o test-calcul.o -o ../release/test-calcul
 
 test-calcul.o: test-calcul.c
-	gcc -c test-calcul.c -o test-calcul.o
+	gcc -c test-calcul.c -o test-calcul.o -std=c99
 
 
 test-lettres_xyz : lettres_xyz.o test-lettres_xyz.o
@@ -89,5 +89,5 @@ test-ecriture_traj : ecriture_traj.o test-ecriture_traj.o
 	gcc ecriture_traj.o test-ecriture_traj.o -o ../release/test-ecriture_traj -std=c99
 
 test-ecriture_traj.o : test-ecriture_traj.c
-	gcc -c test-ecriture_traj.c-o test-ecriture_traj.o
+	gcc -c test-ecriture_traj.c-o test-ecriture_traj.o -std=c99
 

@@ -9,6 +9,7 @@ void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 {
 	FILE * fichier = NULL;
 	char * rep;
+	int i;
 
 	fichier = fopen( "trajectoire.dat", "r" );
 
@@ -25,7 +26,7 @@ void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 	}
 	fichier = fopen( "trajectoire.dat", "w+" ); //OUVERTURE EN ECRITURE EN LE VIDANT AVANT
 
-	for( int i=0; i<np; i++) {
+	for( i=0; i<np; i++) {
 
 		fprintf(fichier, "%f %f %f 0.000000 0.000000  %d\n", tt1[i], tt2[i], tt3[i], ttr[i]);
 		printf("%d % \r", (i / np * 100 ) );

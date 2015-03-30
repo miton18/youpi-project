@@ -10,8 +10,9 @@
 
 void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt2, float* tt3)
 {
+	int i;
 
-	for (int i=0; i< np; i++) // tout les indices du/des tableaux
+	for ( i=0; i< np; i++) // tout les indices du/des tableaux
 	{
 		printf("LETTRETHETA x: %f y: %f z: %f\n", tx[i], ty[i], tz[i]); //OK
 
