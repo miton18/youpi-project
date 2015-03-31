@@ -9,26 +9,39 @@
 int main(int argc, char* argv[])
 {
 
-	int e1, e2;
-	int resultat;
-	char * str;
+	int 	e1, e2;
+	int 	resultat, nb_point;
+	char  * str;
 	
-	float * tt1 = malloc( sizeof(float) * 400 * 16 ); //nombre de point Max x taille float x nombre de caractere max
-	float * tt2 = malloc( sizeof(float) * 400 * 16 );
+	float * tx  = malloc( sizeof(float) * 400 * 16 ); //TABLEAUX DE POSITIONS X Y Z
+	float * ty  = malloc( sizeof(float) * 400 * 16 );
+	float * tz  = malloc( sizeof(float) * 400 * 16 );
+
+	int   * ttr = malloc( sizeof(int)   * 400 * 16 );
+
+	float * tt1 = malloc( sizeof(float) * 400 * 16 ); // TABLEAU D ANGLES T1 T2 T3
+	float * tt2 = malloc( sizeof(float) * 400 * 16 ); //nombre de point Max x taille float x nombre de caractere max
 	float * tt3 = malloc( sizeof(float) * 400 * 16 );
 
-	if( argc == 3)
+	if( argc == 3 && e1=atoi(argv[1]) && e2=atoi(argv[2])) // si passe 2 arguments ( des nombres)
 	{
-		printf("lancement mode console:");
-
+		printf("Les parametres d entree ont ete pris en compte:");
 	}
 	else {
 		ihm(&e1, &e2);
-		resultat = calcul(e1,e2);
-		printf("Resultat = %d\n",resultat);
-		str = conversion( resultat );
-
-		printf("\nchaine : %s", str);
 	}
+
+	resultat = calcul(e1,e2);
+	printf("Resultat = %d\n",resultat);
+	str = conversion( resultat );
+
+	printf("\nchaine : %s\n", str);
+
+	lettresXYZ(    str, tx,  ty,  tz, 		ttr, 		&nb_point);
+	lettresTheta(  tx,  ty,  tz,  nb_point, 	tt1, 		tt2, 		tt3);
+	ecritureTraj(  tt1, tt2, tt3, ttr, 		nb_point);
+
+	lettresMoteur( tt1, tt2, tt3, ttr, 		nb_point);
+
 	return 0;
 }

@@ -13,7 +13,7 @@ void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt
 
 	for ( i=0; i< np; i++) // tout les indices du/des tableaux
 	{
-		printf("LETTRETHETA x: %f y: %f z: %f\n", tx[i], ty[i], tz[i]); //OK
+		//printf("LETTRETHETA x: %f y: %f z: %f\n", tx[i], ty[i], tz[i]); //OK
 
 		tt1[i]= atan( - tz[i] / tx[i]) * 57.295779513082;
 		tt3[i]= acos(
