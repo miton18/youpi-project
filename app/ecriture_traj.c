@@ -33,11 +33,14 @@ void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 
 	for( i=0; i<np; i++) {
 
-		fprintf(fichier, "%f %f %f 0.000000 0.000000  %d\n", tt1[i], tt2[i], tt3[i], ttr[i]);
-		printf("%d % \r", (i / np * 100 ) );
+		fprintf(fichier, "%f %f %f 0.000000 0.000000  %d", tt1[i], tt2[i], tt3[i], ttr[i]);
+		if( i!= (np - 1) )
+		{
+			fprintf(fichier, "\n");
+		}
+		//printf("%d % \r", (i / np * 100 ) );
 
 	}
-
 	fclose(fichier);
 	printf("écriture du fichier terminée!");
 }
