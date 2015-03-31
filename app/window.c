@@ -14,38 +14,30 @@ void window_start(int * e1, int * e2)
 		SDL_Renderer * render 			= NULL;
     	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );/* SDL_WINDOW_BORDERLESS*/
 		int imgFlags = IMG_INIT_PNG;
+		SDL_Event eve;
 		IMG_Init( imgFlags );
-
 		//TTF_Init();
-
-		//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-
 		if(vuePrincipale == 0 && render ==0)
 		{
 			printf("\nImpossible d ouvrir la fenetre...");
 			exit(EXIT_FAILURE);
 		}
 
-		SDL_Event eve;
-
-		SDL_SetRenderDrawColor(render, 255, 255, 255, 200);
+		SDL_SetRenderDrawColor(render, 255, 255, 255, 200); // COULEUR DU BACKGROUND
 		SDL_RenderClear(render);
     	//SDL_RenderPresent(render);
 
-		SDL_Texture * img_close=NULL;
-		img_close = IMG_LoadTexture(render, "image/close.png");
-
-		//SDL_QueryTexture(img_close, NULL, NULL, &w, &h);
+		SDL_Texture * img_close = IMG_LoadTexture(render, "image/close.png");
 		SDL_Rect Rclose;
 		Rclose.x = WIDTH - 50;
 		Rclose.y = 0;
 		Rclose.w = 50;
 		Rclose.h = 50;
-
 		SDL_RenderCopy(render, img_close, NULL, &Rclose);
 
-		//dessinTraceZone(render);
-		//dessinClose(render);
+		dessinTraceZone(render);
+		dessinButton( render, 0, 0 );
+
 		SDL_RenderPresent(render);
 
 		while(keephere)
@@ -59,8 +51,8 @@ void window_start(int * e1, int * e2)
 						exit(0);
 					break;
 
-					case SDL_MOUSEMOTION // SOURIE
-						mouse( eve.motion.x, eve.motion.y);
+					case SDL_MOUSEBUTTONDOWN: // SOURIE
+						mouse( eve.button.x, eve.button.y);
 
 					break;
 
@@ -69,34 +61,6 @@ void window_start(int * e1, int * e2)
 						{
 							case SDLK_ESCAPE:
 								keephere = false;
-							break;
-
-							case SDLK_DELETE:
-								//input->erase = 1;
-							break;
-
-							case SDLK_c:
-								//input->jump = 1;
-							break;
-
-							case SDLK_v:
-								//input->attack = 1;
-							break;
-
-							case SDLK_LEFT:
-								//input->left = 1;
-							break;
-
-							case SDLK_RIGHT:
-								//input->right = 1;
-							break;
-
-							case SDLK_RETURN:
-								//input->enter = 1;
-							break;
-
-							default:
-							break;
 						}
             		break;
 				}
@@ -129,11 +93,26 @@ void dessinTraceZone(SDL_Renderer * ren)
 
   	//SDL_RenderPresent(ren);
 }
+
+
+void dessinButton(	 SDL_Renderer * ren, int x, int y)
+{
+	int h, w;
+	SDL_Texture * button = IMG_LoadTexture(render, "image/button.png");
+	SDL_QueryTexture( button, NULL, NULL, &w, &h);
+	SDL_Rect Rbut;
+		Rbut.x = x;
+		Rbut.y = y;
+	SDL_RenderCopy(ren, button, NULL, &Rbut);
+}
+
+
+
 void mouse( int x, int y )
 {
-	if(mouseIn(x, y, WIDTH - 50, WIDTH, , ))
+	if(mouseIn(x, y, WIDTH - 50, 0, WIDTH, 50 ) == true)
 	{
-
+		exit(0);
 	}
 }
 bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
@@ -145,14 +124,4 @@ bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
 	else {
 		return false;
 	}
-}
-
-void dessinClose(SDL_Renderer * ren )
-{
-	/*SDL_rect r;
-	r.w = 50;
-	r.h = 50;
-	r.x = 0;
-	r.y = WIDTH - 50;
-	//SDL_Surface * image = IMG_Load("image/close.png");*/
 }
