@@ -34,7 +34,7 @@
 
    				case 'L':
                printf("Dans L\n");
-   				//nptemp=lettreL(tx,ty,tz,ttr,i,&indiceTableau);
+   				nptemp=lettreL(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
 
    				case 'C':
@@ -49,7 +49,7 @@
 
    				case 'M':
                printf("Dans M\n");
-   				//nptemp=lettreM(tx,ty,tz,ttr,i,&indiceTableau);
+   				nptemp=lettreM(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
    			}
    			*np +=nptemp;
@@ -60,9 +60,9 @@
    	int lettreX(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=202;
          float hypo=sqrt(pow(9,2)+pow(11,2));
-         float pas=hypo*2/nbp;
+         float pas=hypo*2/((float)nbp);
          float j;
-         for (j = 0; j < hypo; j+=pas)
+         for (j = 0; j < hypo; j=j+pas)
          {
             x[*indice]=(11/9)*j +145;
             y[*indice]=50;
@@ -71,7 +71,7 @@
             *indice=*indice+1;
          }
          tr[*indice-1]=0;
-         for (j = 0; j < hypo;j+=pas )
+         for (j = 0; j < hypo;j=j+pas )
          {
             x[*indice]=((-11*j/9)+11)+145;
             y[*indice]=50;
@@ -80,6 +80,7 @@
             *indice=*indice+1;
          }
          tr[*indice-1]=0;
+         printf("%d\n",*indice );
          return nbp;
 
    	}
@@ -120,16 +121,17 @@
             *indiceTableau=*indiceTableau+1;
          }
          tr[*indiceTableau-1]=0;
+         printf("%d\n",*indiceTableau );
          return nbp;
       }
 
       int lettreM(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
          float hypo = sqrt(pow(11,2)+pow(4.5,2));
-         float pas = (hypo*2+11*2)/nbp;
+         float pas = (hypo*2+11*2)/((float)nbp);
          float j;
          //points du 1er trait vertical
-         for (j = 0; j < 9; j+=pas)
+         for (j = 0; j < 11; j=j+pas)
          {
             x[*indice]=j+145;
             y[*indice]=50;
@@ -137,8 +139,9 @@
             tr[*indice]=1;
             *indice=*indice+1;
          }
+         printf("%d\n",*indice );
          //points du 1er trait diagonal
-         for (j = 0; j < 9; j+=pas)
+         for (j = 0; j < hypo; j=j+pas)
          {
             x[*indice]=(-2*11/9)+11+145;
             y[*indice]=50;
@@ -146,8 +149,9 @@
             tr[*indice]=1;
             *indice=*indice+1;
          }
+         printf("%d\n",*indice );
          //points du 2eme trait diagonal
-         for (j = 0; j < 11; j+=pas)
+         for (j = 0; j < hypo; j=j+pas)
          {
             x[*indice]=(2*11/9)-11+145;
             y[*indice]=50;
@@ -155,8 +159,9 @@
             tr[*indice]=1;
             *indice=*indice+1;
          }
+         printf("%d\n",*indice );
          //points du 2em trait vertical
-         for (j = 0; j < 11; j+=pas)
+         for (j = 0; j < 11; j=j+pas)
          {
             x[*indice]=j+145;
             y[*indice]=50;
@@ -164,6 +169,7 @@
             tr[*indice]=1;
             *indice=*indice+1;
          }
+         printf("%d\n",*indice );
          tr[*indice-1]=0;
          return nbp;
       }
@@ -171,10 +177,10 @@
       int lettreV(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
          float hypo = sqrt(pow(11,2)+pow(4.5,2));
-         float pas = (hypo*2)/nbp;
+         float pas = (hypo*2)/((float)nbp);
          float j;
          //points du 1er trait diagonal
-         for (j = 0; j < hypo; j+=pas)
+         for (j = 0; j < hypo; j=j+pas)
          {
             x[*indice]=(-2*11/9)+11+145;
             y[*indice]=50;
@@ -183,7 +189,7 @@
             *indice=*indice+1;
          }
          //points du 2eme trait diagonal
-         for (j = 0; j < hypo; j+=pas)
+         for (j = 0; j < hypo; j=j+pas)
          {
             x[*indice]=(2*11/9)-11+145;
             y[*indice]=50;
@@ -192,6 +198,7 @@
             *indice=*indice+1;
          }
          tr[*indice-1]=0;
+         printf("%d\n",*indice );
          return nbp;
       }
 
@@ -207,10 +214,10 @@
 
       int lettreL(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=202;
-         float pas = (11+9)/nbp;
+         float pas = (11+9)/((float)nbp);
          float j;
          //points du trait vertical
-         for (j = 0; j < 9; j+=pas)
+         for (j = 0; j < 9; j=j+pas)
          {
             x[*indice]=j+145;
             y[*indice]=50;
@@ -219,7 +226,7 @@
             *indice=*indice+1;
          }
          //points du trait orizontal
-         for (j = 0; j < 11; j+=pas)
+         for (j = 0; j < 11; j=j+pas)
          {
             x[*indice]=0+145;
             y[*indice]=50;
@@ -228,5 +235,6 @@
             *indice=*indice+1;
          }
          tr[*indice-1]=0;
+         printf("%d\n",*indice );
          return nbp;
       }
