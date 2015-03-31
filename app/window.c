@@ -17,6 +17,7 @@ void window_start(int * e1, int * e2)
 		SDL_Event eve;
 		IMG_Init( imgFlags );
 		TTF_Init();
+
 		if(vuePrincipale == 0 && render ==0)
 		{
 			printf("\nImpossible d ouvrir la fenetre...");
@@ -25,7 +26,6 @@ void window_start(int * e1, int * e2)
 
 		SDL_SetRenderDrawColor(render, 255, 255, 255, 200); // COULEUR DU BACKGROUND
 		SDL_RenderClear(render);
-    	//SDL_RenderPresent(render);
 
 		SDL_Texture * buttonV 	= IMG_LoadTexture(render, "image/button.png");
 		SDL_Texture * img_close = IMG_LoadTexture(render, "image/close.png");
@@ -37,7 +37,10 @@ void window_start(int * e1, int * e2)
 		SDL_RenderCopy(render, img_close, NULL, &Rclose);
 
 		dessinTraceZone(render);
-		dessinButton( render, buttonV, 10, 10 );
+		dessinButton( render, buttonV, 10, 10);
+
+		char * t1 = "test";
+		dessinTexte( render, t1, 50, 50, 30, BLACK);
 
 		SDL_RenderPresent(render);
 
@@ -69,6 +72,7 @@ void window_start(int * e1, int * e2)
 		}
 		SDL_DestroyRenderer(render);
 		SDL_DestroyWindow(vuePrincipale);
+		TTF_Quit();
 		SDL_Quit();
 	}
 
@@ -110,6 +114,35 @@ void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
 }
 
 
+
+void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int color)
+{
+	SDL_Color Tcolor = { 0, 0, 0, 0 };
+	/*if( color == WHITE)
+	{
+		Tcolor = { 255, 255, 255, 255 };
+	}
+	else if( color == BLACK)
+	{
+		Tcolor = { 5, 5, 5, 255 };
+	}*/
+
+	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Condensed.ttf", size);
+	if(font == NULL)
+	{
+		puts("NULL");
+	}
+	SDL_Surface * 	texte = TTF_RenderText_Blended( font, txt, Tcolor);
+
+	SDL_Texture *	Ttexte = SDL_CreateTextureFromSurface(ren, texte);
+
+	int iW, iH;
+	SDL_QueryTexture( Ttexte, NULL, NULL, &iW, &iH);
+
+	SDL_FreeSurface(texte);
+	TTF_CloseFont(font);
+	//renderTexture( Ttexte, ren, x, y);
+}
 
 void mouse( int x, int y )
 {
