@@ -51,15 +51,14 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 				ang_moteur[2] = tt3[i];
 
 				for( j=0; j< NB_MOTEUR ; j++)
-				//for( j=0; j< 1 ; j++)
 				{
 					if(ang_moteur[j] != cptMoteur[j]) // EVITE LES TRAMES INUTILES
 					{
 						createTrame( TxBuffer, cptMoteur[j], ang_moteur[j], j+1 );
 						printf("TRAME: %s", TxBuffer);
 						printf("LONGEUR: %d\n", strlen(TxBuffer));
+						sleep(1);
 						ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(char)*9, &BytesWritten);// ECRITURE !!!!
-						sleep(100);
 						cptMoteur[j] = ang_moteur[j];
 					}
 

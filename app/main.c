@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 	lettresTheta(  tx,  ty,  tz,  nb_point, 	tt1, 		tt2, 		tt3);
 	ecritureTraj(  tt1, tt2, tt3, ttr, 		nb_point);
 
-	//lettresMoteur( tt1, tt2, tt3, ttr, 		nb_point);
+	lettresMoteur( tt1, tt2, tt3, ttr, 		nb_point);
 
 	return 0;
 }
