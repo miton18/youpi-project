@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
 	int 	e1, e2;
 	int 	resultat, nb_point=0;
 	char  * str;
+	char  * ui = "-ui";
 	
 	float * tx  = malloc( sizeof(float) * 400 * 16 ); //TABLEAUX DE POSITIONS X Y Z
 	float * ty  = malloc( sizeof(float) * 400 * 16 );
@@ -29,9 +30,10 @@ int main(int argc, char* argv[])
 		e2=atoi(argv[2]);
 		printf("Les parametres d entree ont ete pris en compte: %d %d\n", e1, e2);
 	}
-	else if( argc == 2 && argv[1]=="-ui")
+	else if( argc == 2 /*&& strcmp( argv[1], ui)*/ )
 	{
-
+		printf("Demarrage de l'inteface graphique...");
+		window_start( &e1, &e2);
 	}
 	else {
 		ihm(&e1, &e2);

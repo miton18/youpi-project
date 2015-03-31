@@ -2,8 +2,8 @@
 #									PROGRAMME PRINCIPAL											   #
 ####################################################################################################
 
-youpi-control : main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o
-	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o -o ../release/youpi-project -L./lib -I./include -lftd2xx -lmingw32 -lSDL2main -lSDL2
+youpi-control : main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o window.o
+	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o window.o -o ../release/youpi-project -L./lib -I./include -lftd2xx -lmingw32 -lSDL2main -lSDL2
 
 ####################################################################################################
 #									TOUT LES PROGRAMMES											   #
@@ -38,6 +38,9 @@ lettres_moteur.o : lettres_moteur.c lettres_moteur.h ftd2xx.h
 
 ecriture_traj.o : ecriture_traj.c ecriture_traj.h
 	gcc -c ecriture_traj.c -o ecriture_traj.o
+
+window.o : window.h window.c
+	gcc -c window.c -o window.o -L./lib -I./include -lmingw32 -lSDL2main -lSDL2
 
 ####################################################################################################
 #									NETTOYAGE													   #

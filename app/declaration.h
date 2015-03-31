@@ -14,4 +14,5 @@
 	#include "lettres_theta.h"
 	#include "lettres_moteur.h"
 	#include "ecriture_traj.h"
+	#include "window.h"
 #endif
