@@ -3,7 +3,7 @@
 ####################################################################################################
 
 youpi-control : main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o window.o
-	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o window.o -o ../release/youpi-project -L./lib -I./include -lftd2xx -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+	gcc -Wextra main.o ihm.o calcul.o conversion.o lettres_xyz.o lettres_theta.o lettres_moteur.o ecriture_traj.o window.o -o ../release/youpi-project -L./lib -I./include -lftd2xx -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 ####################################################################################################
 #									TOUT LES PROGRAMMES											   #
@@ -40,7 +40,7 @@ ecriture_traj.o : ecriture_traj.c ecriture_traj.h
 	gcc -c ecriture_traj.c -o ecriture_traj.o
 
 window.o : window.h window.c
-	gcc -c window.c -o window.o -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+	gcc -c window.c -o window.o -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 ####################################################################################################
 #									NETTOYAGE													   #
