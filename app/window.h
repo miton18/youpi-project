@@ -27,9 +27,9 @@
 	//DEFINITION DU TYPE BOOLEEN
 	typedef enum { false, true } bool;
 
-	void dessinTraceZone(SDL_Renderer * ren);
-	void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y);
-	void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int color);
+	void dessinTraceZone(	SDL_Renderer * ren);
+	void dessinButton( 		SDL_Renderer * ren, SDL_Texture * Text, int x, int y);
+	void dessinTexte( 		SDL_Renderer * ren, char * txt, int x, int y, int size, int color);
 	void mouse( int x, int y );
 	bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb);
 

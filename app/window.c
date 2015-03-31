@@ -16,7 +16,7 @@ void window_start(int * e1, int * e2)
 		int imgFlags = IMG_INIT_PNG;
 		SDL_Event eve;
 		IMG_Init( imgFlags );
-		TTF_Init()
+		TTF_Init();
 
 		if(vuePrincipale == 0 && render ==0)
 		{
@@ -40,8 +40,11 @@ void window_start(int * e1, int * e2)
 		dessinTraceZone(render);
 		dessinButton( render, buttonV, 10, 10);
 
-		char * t1 = "test";
-		dessinTexte( render, t1, 400, 300, 30, BLACK);
+		char * t1 = "Youpi: addition";
+		dessinTexte( render, t1, 16, 18, 400, BLACK);
+		char * t2 = "Lancer!";
+		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 60, 400, BLACK);
+
 
 		SDL_RenderPresent(render);
 
@@ -80,6 +83,13 @@ void window_start(int * e1, int * e2)
 	*e1 = 5;
 	*e2 = 10;
 }
+
+
+
+
+
+
+
 void dessinTraceZone(SDL_Renderer * ren)
 {
 	int colr, colg, colb;
@@ -101,6 +111,10 @@ void dessinTraceZone(SDL_Renderer * ren)
 }
 
 
+
+
+
+
 void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
 {
 	int h, w;
@@ -116,42 +130,70 @@ void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
 
 
 
+
+
+
+
+
+
+
 void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int color)
 {
-	SDL_Color Tcolor = { 0, 0, 0, 0 };
-	/*if( color == WHITE)
+	SDL_Color Tcolor;
+	SDL_Color color_white = {   5,  5,  5 };
+	SDL_Color color_black = { 255,255,255 };
+	if( color == WHITE)
 	{
-		Tcolor = { 255, 255, 255, 255 };
+		Tcolor = color_white;
 	}
 	else if( color == BLACK)
 	{
-		Tcolor = { 5, 5, 5, 255 };
-	}*/
-
-	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Condensed.ttf", size);
-	if(font == NULL)
-	{
-		puts("NULL");
+		Tcolor = color_black;
 	}
-	SDL_Surface * 	texte = TTF_RenderText_Blended( font, txt, Tcolor);
+	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Condensed.ttf", size);
 
-	SDL_Texture *	Ttexte = SDL_CreateTextureFromSurface(ren, texte);
+	SDL_Rect R;
+		R.x = x;
+		R.y = y;
+		R.w = 80;
+		R.h = 25;
 
-	int iW, iH;
-	SDL_QueryTexture( Ttexte, NULL, NULL, &iW, &iH);
+	SDL_Surface * texte  = TTF_RenderText_Blended( font, txt, Tcolor);
+	SDL_Texture * Ttexte = SDL_CreateTextureFromSurface(ren, texte);
+	SDL_RenderCopy(ren, Ttexte, NULL, &R);
 
 	SDL_FreeSurface(texte);
+	SDL_DestroyTexture( Ttexte );
 	TTF_CloseFont(font);
-	//renderTexture( Ttexte, ren, x, y);
 }
+
+
+
+
+
 
 void mouse( int x, int y )
 {
-	if(mouseIn(x, y, WIDTH - 50, 0, WIDTH, 50 ) == true)
+	if(mouseIn( x, y, WIDTH - 50, 0, WIDTH, 50 ) == true)
 	{
 		exit(0);
 	}
+	else if(mouseIn( x, y,  20, ( HEIGHT / 2 ) + 60, 80+20, ( HEIGHT / 2 ) + 60 +25 ) )
+	{
+		puts("lancer...\n");
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
 bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
 {
 	if( mx > fxa && mx < fxb && my > fya && my < fyb )
