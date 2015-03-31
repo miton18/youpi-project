@@ -37,19 +37,19 @@ int main(int argc, char* argv[])
 	}
 	else {
 		ihm(&e1, &e2);
+		resultat = calcul(e1,e2);
+		printf("Resultat = %d\n",resultat);
+		str = conversion( resultat );
+
+		printf("\nchaine : %s\n", str);
+
+		lettresXYZ(    str, tx,  ty,  tz, 		ttr, 		&nb_point);
+		lettresTheta(  tx,  ty,  tz,  nb_point, 	tt1, 		tt2, 		tt3);
+		ecritureTraj(  tt1, tt2, tt3, ttr, 		nb_point);
+
+		lettresMoteur( tt1, tt2, tt3, ttr, 		nb_point);
 	}
 
-	resultat = calcul(e1,e2);
-	printf("Resultat = %d\n",resultat);
-	str = conversion( resultat );
-
-	printf("\nchaine : %s\n", str);
-
-	lettresXYZ(    str, tx,  ty,  tz, 		ttr, 		&nb_point);
-	lettresTheta(  tx,  ty,  tz,  nb_point, 	tt1, 		tt2, 		tt3);
-	ecritureTraj(  tt1, tt2, tt3, ttr, 		nb_point);
-
-	//lettresMoteur( tt1, tt2, tt3, ttr, 		nb_point);
 
 	return 0;
 }

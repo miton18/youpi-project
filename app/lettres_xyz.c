@@ -44,6 +44,9 @@
    				case 'M':
    				nptemp=lettreM(tx,ty,tz,ttr,i,&indiceTableau);
    				break;
+				default:
+					return ;
+				break;
 
    			}
    			*np +=nptemp;

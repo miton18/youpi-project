@@ -14,7 +14,8 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 	FT_HANDLE ftHandle;
 	DWORD numDevs, Flags, ID, Type, LocId, BytesWritten;
 	char Description[64], SerialNumber[16];
-	char * TxBuffer = malloc(sizeof(char) * 9); // Trame a envoyer
+	char * TxBuffer 	= malloc(sizeof(char) * 9); // Trame a envoyer
+	char * startTrame 	= "0;-0000\r\n";
 
 	float ang_moteur[ NB_MOTEUR ];
 	float cptMoteur[ NB_MOTEUR ] = {0.0,0.0,0.0};
@@ -22,7 +23,7 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 	int i, j;
 
 	// LISTE LES PERIPHERIQUES
-	/*if ( FT_CreateDeviceInfoList(&numDevs) == FT_OK)
+	if ( FT_CreateDeviceInfoList(&numDevs) == FT_OK)
 	{
 		printf("Nombre de peripheriques connectes: %d\n",numDevs);
 		ftStatus = FT_GetDeviceInfoDetail(0, &Flags, &Type, &ID, &LocId, SerialNumber, Description, &ftHandle);
@@ -39,6 +40,10 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 		{
 			printf("Connexion au peripheriques USB reussie.\n");// ON EST CONNECTER*/
 
+			//TRAME DE DEBUT
+
+			ftStatus = FT_Write(ftHandle, startTrame, sizeof(startTrame), &BytesWritten);
+
 			for( i=0; i<np; i++) // parcours de chaque positions
 			{
 				ang_moteur[0] = tt1[i]; // ON STOCK DES ANGLES FLOAT THETA
@@ -51,28 +56,32 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 					{
 						createTrame( TxBuffer, cptMoteur[j], ang_moteur[j], j+1 );
 						printf("TRAME: %s", TxBuffer);
+						printf("LONGEUR: %d\n", strlen(TxBuffer));
+						sleep(1);
+						ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(char)*9, &BytesWritten);// ECRITURE !!!!
 						cptMoteur[j] = ang_moteur[j];
 					}
 
-					//ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(TxBuffer), &BytesWritten);// ECRITURE !!!!
 
-					/*if (ftStatus == FT_OK) {
+
+					if (ftStatus == FT_OK) {
 						printf("\t OK \t");
 					}
 					else {
 						printf("L'ecriture n'a pas aboutie, arret....\n");
 						return;
 					}
-					printf("Données n° %d envoyees: %d / %d\n", i, BytesWritten, sizeof(TxBuffer));
-					FT_Close(ftHandle); 	//FERME LA CONNEXION*/
+					printf("Donnees n %d envoyees: %d / %d\n", i, BytesWritten, sizeof(char)*9);
 				}
 
-			}/*
+			}
+			ftStatus = FT_Write(ftHandle, startTrame, sizeof(startTrame), &BytesWritten);
+			FT_Close(ftHandle); 	//FERME LA CONNEXION*/
 		}
 	}
 	else {
 		puts("Impossible de detecter les péripheriques.\n");
-	}*/
+	}
 }
 
 /**
@@ -127,6 +136,7 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 
 	sprintf(trame, "%s%c", trame, '\r');
 	sprintf(trame, "%s%c", trame, '\n');
+
 }
 
 /**
