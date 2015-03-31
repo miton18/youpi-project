@@ -17,8 +17,10 @@ int main(int argc, char* argv[]) {
 	lettresXYZ( str, tx, ty, tz, ttr, &np);
 
 	printf("nombre de points: %d", np);
+
 	int i;
 	for(i=0; i< np; i++)
+
 	{
 		printf("\nRETOUR: i=%d x=%f y=%f z=%f tr=%d",i, tx[i], ty[i], tz[i], ttr[i]);
 	}

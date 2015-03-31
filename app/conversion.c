@@ -1,5 +1,10 @@
 #include "conversion.h"
 
+/**
+	* Converti un entier en chiffres romain
+	* @param s: entier a convertir
+	* @return (char*): chiffre romain sous forme de chaine de caractere
+*/
 char * conversion(int s)
 {
 	if( s <= 0) {
@@ -12,6 +17,7 @@ char * conversion(int s)
 	decoup[1] 	= s / 10 % 10;
 	decoup[2] 	= s / 100 % 10;
 	decoup[3] 	= s / 1000 % 10;
+
 	printf("millier: %d centaine: %d dizaine: %d unit%C: %d", decoup[3], decoup[2], decoup[1], 130, decoup[0]);
 
 	strcpy( number, "");
