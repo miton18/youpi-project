@@ -12,11 +12,11 @@ void window_start(int * e1, int * e2)
 	{
 		SDL_Window   * vuePrincipale 	= NULL;
 		SDL_Renderer * render 			= NULL;
-    	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );/* SDL_WINDOW_BORDERLESS*/
+    	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );
 		int imgFlags = IMG_INIT_PNG;
 		SDL_Event eve;
 		IMG_Init( imgFlags );
-		//TTF_Init();
+		TTF_Init();
 		if(vuePrincipale == 0 && render ==0)
 		{
 			printf("\nImpossible d ouvrir la fenetre...");
@@ -27,6 +27,7 @@ void window_start(int * e1, int * e2)
 		SDL_RenderClear(render);
     	//SDL_RenderPresent(render);
 
+		SDL_Texture * buttonV 	= IMG_LoadTexture(render, "image/button.png");
 		SDL_Texture * img_close = IMG_LoadTexture(render, "image/close.png");
 		SDL_Rect Rclose;
 		Rclose.x = WIDTH - 50;
@@ -36,7 +37,7 @@ void window_start(int * e1, int * e2)
 		SDL_RenderCopy(render, img_close, NULL, &Rclose);
 
 		dessinTraceZone(render);
-		dessinButton( render, 0, 0 );
+		dessinButton( render, buttonV, 10, 10 );
 
 		SDL_RenderPresent(render);
 
@@ -95,15 +96,17 @@ void dessinTraceZone(SDL_Renderer * ren)
 }
 
 
-void dessinButton(	 SDL_Renderer * ren, int x, int y)
+void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
 {
-	/*int h, w;
-	SDL_Texture * button = IMG_LoadTexture(render, "image/button.png");
-	SDL_QueryTexture( button, NULL, NULL, &w, &h);
-	SDL_Rect Rbut;
-		Rbut.x = x;
-		Rbut.y = y;
-	SDL_RenderCopy(ren, button, NULL, &Rbut);*/
+	int h, w;
+
+	SDL_QueryTexture( Text, NULL, NULL, &w, &h);
+	SDL_Rect R;
+		R.x = x;
+		R.y = y;
+		R.w = 100;
+		R.h = 40;
+	SDL_RenderCopy(ren, Text, NULL, &R);
 }
 
 

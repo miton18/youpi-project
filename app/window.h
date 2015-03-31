@@ -25,7 +25,7 @@
 	typedef enum { false, true } bool;
 
 	void dessinTraceZone(SDL_Renderer * ren);
-	void dessinButton(	 SDL_Renderer * ren, int x, int y);
+	void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y);
 	void mouse( int x, int y );
 	bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb);
 
