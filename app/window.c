@@ -97,13 +97,13 @@ void dessinTraceZone(SDL_Renderer * ren)
 
 void dessinButton(	 SDL_Renderer * ren, int x, int y)
 {
-	int h, w;
+	/*int h, w;
 	SDL_Texture * button = IMG_LoadTexture(render, "image/button.png");
 	SDL_QueryTexture( button, NULL, NULL, &w, &h);
 	SDL_Rect Rbut;
 		Rbut.x = x;
 		Rbut.y = y;
-	SDL_RenderCopy(ren, button, NULL, &Rbut);
+	SDL_RenderCopy(ren, button, NULL, &Rbut);*/
 }
 
 
