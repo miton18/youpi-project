@@ -1,5 +1,4 @@
 #include "window.h"
-
 void window_start(int * e1, int * e2)
 {
 	bool keephere = true;
@@ -11,11 +10,15 @@ void window_start(int * e1, int * e2)
 	}
 	else
 	{
+		SDL_Window   * vuePrincipale 	= NULL;
+		SDL_Renderer * render 			= NULL;
+    	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );/* SDL_WINDOW_BORDERLESS*/
+		int imgFlags = IMG_INIT_PNG;
+		IMG_Init( imgFlags );
 
-		SDL_Window   * vuePrincipale = 0;
-		SDL_Renderer * render =0;
-    	vuePrincipale = SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );/* SDL_WINDOW_BORDERLESS*/
-		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+		//TTF_Init();
+
+		//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
 		if(vuePrincipale == 0 && render ==0)
 		{
@@ -25,18 +28,25 @@ void window_start(int * e1, int * e2)
 
 		SDL_Event eve;
 
-		SDL_SetRenderDrawColor(render, 255, 255, 255, 100);
-  		SDL_RenderClear(render);
-  		SDL_RenderPresent(render);
+		SDL_SetRenderDrawColor(render, 255, 255, 255, 200);
+		SDL_RenderClear(render);
+    	//SDL_RenderPresent(render);
 
-		SDL_Surface * img_close;
-		/*if( img_close = IMG_Load("image/close.png" ) )
-		{
-    		printf("IMG_Load: %s\n", IMG_GetError());
-		}*/
+		SDL_Texture * img_close=NULL;
+		img_close = IMG_LoadTexture(render, "image/close.png");
 
-		dessinTraceZone(render);
-		dessinClose(render);
+		//SDL_QueryTexture(img_close, NULL, NULL, &w, &h);
+		SDL_Rect Rclose;
+		Rclose.x = WIDTH - 50;
+		Rclose.y = 0;
+		Rclose.w = 50;
+		Rclose.h = 50;
+
+		SDL_RenderCopy(render, img_close, NULL, &Rclose);
+
+		//dessinTraceZone(render);
+		//dessinClose(render);
+		SDL_RenderPresent(render);
 
 		while(keephere)
 		{
@@ -47,6 +57,11 @@ void window_start(int * e1, int * e2)
 				{
 					case SDL_QUIT: //BOUTON FERMER
 						exit(0);
+					break;
+
+					case SDL_MOUSEMOTION // SOURIE
+						mouse( eve.motion.x, eve.motion.y);
+
 					break;
 
 					case SDL_KEYDOWN:		//TOUCHE CLAVIER
@@ -112,9 +127,32 @@ void dessinTraceZone(SDL_Renderer * ren)
 	SDL_SetRenderDrawColor( ren, 10, 10, 10, 20);
 	SDL_RenderFillRect(ren, &r);
 
-  	SDL_RenderPresent(ren);
+  	//SDL_RenderPresent(ren);
 }
-void dessinClose(SDL_Renderer * ren)
+void mouse( int x, int y )
 {
-	//SDL_Surface * image = IMG_Load("image/close.png");
+	if(mouseIn(x, y, WIDTH - 50, WIDTH, , ))
+	{
+
+	}
+}
+bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
+{
+	if( mx > fxa && mx < fxb && my > fya && my < fyb )
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void dessinClose(SDL_Renderer * ren )
+{
+	/*SDL_rect r;
+	r.w = 50;
+	r.h = 50;
+	r.x = 0;
+	r.y = WIDTH - 50;
+	//SDL_Surface * image = IMG_Load("image/close.png");*/
 }

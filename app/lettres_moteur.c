@@ -108,7 +108,6 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 	toStr(Cmot, nMot);
 	strcpy( trame,  Cmot);  					// NUMERO DE MOTEUR
 	strcat( trame, sep);			 			// SEPARATEUR
-	//trame[1]= 0x3B;
 
 	if( (ang_dest - cpt) < 0 ) {				//SIGNE
 		sprintf(trame, "%s%c", trame, '-');
