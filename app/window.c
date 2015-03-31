@@ -16,7 +16,7 @@ void window_start(int * e1, int * e2)
 		int imgFlags = IMG_INIT_PNG;
 		SDL_Event eve;
 		IMG_Init( imgFlags );
-		TTF_Init();
+		TTF_Init()
 
 		if(vuePrincipale == 0 && render ==0)
 		{
@@ -29,6 +29,7 @@ void window_start(int * e1, int * e2)
 
 		SDL_Texture * buttonV 	= IMG_LoadTexture(render, "image/button.png");
 		SDL_Texture * img_close = IMG_LoadTexture(render, "image/close.png");
+
 		SDL_Rect Rclose;
 		Rclose.x = WIDTH - 50;
 		Rclose.y = 0;
@@ -40,7 +41,7 @@ void window_start(int * e1, int * e2)
 		dessinButton( render, buttonV, 10, 10);
 
 		char * t1 = "test";
-		dessinTexte( render, t1, 50, 50, 30, BLACK);
+		dessinTexte( render, t1, 400, 300, 30, BLACK);
 
 		SDL_RenderPresent(render);
 
