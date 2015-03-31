@@ -50,7 +50,7 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 					if(ang_moteur[j] != cptMoteur[j]) // EVITE LES TRAMES INUTILES
 					{
 						createTrame( TxBuffer, cptMoteur[j], ang_moteur[j], j+1 );
-						printf("TRAME: %s\n", TxBuffer);
+						printf("TRAME: %s", TxBuffer);
 						cptMoteur[j] = ang_moteur[j];
 					}
 

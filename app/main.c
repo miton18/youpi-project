@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
 
 	int 	e1, e2;
-	int 	resultat, nb_point;
+	int 	resultat, nb_point=0;
 	char  * str;
 	
 	float * tx  = malloc( sizeof(float) * 400 * 16 ); //TABLEAUX DE POSITIONS X Y Z
@@ -23,9 +23,15 @@ int main(int argc, char* argv[])
 	float * tt2 = malloc( sizeof(float) * 400 * 16 ); //nombre de point Max x taille float x nombre de caractere max
 	float * tt3 = malloc( sizeof(float) * 400 * 16 );
 
-	if( argc == 3 && e1=atoi(argv[1]) && e2=atoi(argv[2])) // si passe 2 arguments ( des nombres)
+	if( argc == 3) // si passe 2 arguments ( des nombres)
 	{
-		printf("Les parametres d entree ont ete pris en compte:");
+		e1=atoi(argv[1]);
+		e2=atoi(argv[2]);
+		printf("Les parametres d entree ont ete pris en compte: %d %d\n", e1, e2);
+	}
+	else if( argc == 2 && argv[1]=="-ui")
+	{
+
 	}
 	else {
 		ihm(&e1, &e2);

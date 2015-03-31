@@ -13,17 +13,17 @@
 void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 {
 	FILE * fichier = NULL;
-	char * rep;
+	char   rep[2];
 	int i;
 
 	fichier = fopen( "trajectoire.dat", "r" );
 
 	if( fichier != NULL  ) {		// CAS OU LE FICHIER EXISTE DEJA
 
-		printf("/!\\ ATTENTION le fichier trajectoire.dat éxiste déja et va être écraser! Continuer? ( o ou n)\n");
-		fgets( rep , sizeof( char ), stdin);
+		printf("/!\\ ATTENTION le fichier trajectoire.dat existe deja\n et va etre ecraser! Continuer? ( o ou n) ");
+		fgets( rep , sizeof( rep ), stdin);
 
-		if( *rep!='o' && *rep!='O' && *rep!='Y' && *rep!='y') {
+		if( rep[0]!='o' && rep[0]!='O' && rep[0]!='Y' && rep[0]!='y') {
 			printf("le programme va se fermer...");
 			exit(EXIT_SUCCESS);
 		}
