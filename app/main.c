@@ -32,7 +32,8 @@ int main(int argc, char* argv[])
 	}
 	else if( argc == 2 /*&& strcmp( argv[1], ui)*/ )
 	{
-		printf("aaaaaa%saaaaaa", argv[1]);
+		printf("Demarrage de l'inteface graphique...");
+		window_start( &e1, &e2);
 	}
 	else {
 		ihm(&e1, &e2);
