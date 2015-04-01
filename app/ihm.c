@@ -6,6 +6,7 @@
    	Demande à l'utilisateur de rentrer 2 chiffres
    	-----------------------------------------------------*/
 #include "ihm.h"
+#include <string.h>
 
 /* Fonction ihm
    Parametre : int e1 , premier chiffre demmandé de rentrer à l'utilisateur (sortie)
@@ -15,7 +16,10 @@
 void ihm(int* e1, int* e2)
 {
 	char number[5];
+	int tmp =0;
 	bool okNum=false;
+	char temp;
+	char temp2;
 
 	line();
 	line();
@@ -28,8 +32,17 @@ void ihm(int* e1, int* e2)
 	do {
 		printf("\nEntrez votre premi%cre valeur: ", 138); //	138 = é
 		fgets(number, sizeof number, stdin);
+		if (strlen(number)==2)
+		{
+			temp = number[0];
+		}
+		if (temp == '0')
+		{
+			*e1 = 0;
+			okNum = true;
+		}
 
-		if ( *e1 = atoi(number) )
+		else if ( *e1 = atoi(number))
 		{
 			printf("Nombre: %d \n", *e1);
 			okNum = true;
@@ -41,11 +54,21 @@ void ihm(int* e1, int* e2)
 		}
 		fflush(stdin); // nettoie le buffer
 	} while( !okNum );
+
 	do {
 		printf("\nEntrez votre deuxi%cme valeur: ", 138);
 		fgets(number, sizeof number, stdin);
+		if (strlen(number)==2)
+		{
+			temp2 = number[0];
+		}
+		if (temp2 == '0')
+		{
+			*e2 = 0;
+			okNum = true;
+		}
 
-		if ( *e2 = atoi(number) )
+		else if ( *e2 = atoi(number))
 		{
 			printf("Nombre: %d \n", *e2);
 			okNum = true;
