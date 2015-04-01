@@ -63,7 +63,7 @@ void window_start()
 		dessinButton( 		render, buttonV, 10, 10);
 
 		char * t1 = "Youpi: addition";
-		dessinTexte( render, t1, 16, 18, 400, BLACK);
+		dessinTexte( render, t1, 16, 18, 400, WHITE);
 		char * t2 = "Lancer!";
 		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 150, 400, BLACK);
 
@@ -188,13 +188,18 @@ void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int co
 	SDL_Color Tcolor;
 	SDL_Color color_white = {   5,  5,  5 };
 	SDL_Color color_black = { 255,255,255 };
+	SDL_Color color_red   = { 255,  5,  5 };
 	if( color == WHITE)
 	{
-		Tcolor = color_white;
+		Tcolor = color_black;
 	}
 	else if( color == BLACK)
 	{
-		Tcolor = color_black;
+		Tcolor = color_white;
+	}
+	else if ( color == RED)
+	{
+		Tcolor = color_red;
 	}
 	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Condensed.ttf", size);
 
@@ -262,9 +267,10 @@ bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
 
 void startDraw(	SDL_Renderer * ren, float * tx, float * ty, float * tz, int * ttr, int nb_point) // z horizontal, x verticale
 {
-	int i, x, y;
-	char * load = malloc(sizeof(char) * 6);
+	int i, j, x, y;
+	char * wait = "PATIENTEZ SVP";
 	SDL_SetRenderDrawColor( ren, 10, 10, 10, 255);
+	dessinTexte( ren, wait, 80, HEIGHT - 50, 400, RED);
 
 	for( i=0; i< nb_point; i++)
 		//printf("point: %f, %f\n", tz[i] + 139.5, 		tx[i] - 145 );
@@ -275,8 +281,17 @@ void startDraw(	SDL_Renderer * ren, float * tx, float * ty, float * tz, int * tt
 		//printf("point: %d, %d\n", x, y);
 		SDL_RenderDrawPoint(ren, x, y );
 
-		dessinTexte( ren, load, WIDTH / 2 - 80, HEIGHT - 50, 45, RED);
-
 		SDL_RenderPresent(ren);
 	}
+
+	SDL_Rect r;
+  	SDL_SetRenderDrawBlendMode(ren,SDL_BLENDMODE_BLEND);
+	r.w = 300;
+	r.h = 50;
+	r.x = 80;
+	r.y = HEIGHT - 50;
+
+	SDL_SetRenderDrawColor( ren, 255, 255, 255, 255);
+	SDL_RenderFillRect(ren, &r);
+	SDL_RenderPresent(ren);
 }

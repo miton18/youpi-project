@@ -28,7 +28,7 @@ void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 		printf("/!\\ ATTENTION le fichier trajectoire.dat existe deja\n et va etre ecraser! Continuer? ( o ou n) ");
 		fgets( rep , sizeof( rep ), stdin);
 
-		if( rep[0]!='o' && rep[0]!='O' && rep[0]!='Y' && rep[0]!='y') {
+		if( rep[0]!='o' && rep[0]!='y') {
 			printf("le programme va se fermer...");
 			exit(EXIT_SUCCESS);
 		}

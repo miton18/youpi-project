@@ -28,7 +28,8 @@
 	#define WIDTH  1200
 
 	#define BLACK 1
-	#define WHITE 1
+	#define WHITE 2
+	#define RED   3
 
 	void window_start();
 
