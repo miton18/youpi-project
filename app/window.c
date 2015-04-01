@@ -4,8 +4,10 @@ void window_start()
 	//TEMPORAIRE
 	char  * str;
 	int nb_point, e1, e2;
-	char  * Ce1, Ce2;
-	char  ** Cactive;
+	char  * Ce1[10];
+	char  * Ce2[10];
+	int 	Eactive;
+
 	float * tx  = malloc( sizeof(float) * 400 * 16 ); //TABLEAUX DE POSITIONS X Y Z
 	float * ty  = malloc( sizeof(float) * 400 * 16 );
 	float * tz  = malloc( sizeof(float) * 400 * 16 );
@@ -34,18 +36,14 @@ void window_start()
 		SDL_Window   * vuePrincipale 	= NULL;
 		SDL_Renderer * render 			= NULL;
     	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );
-		int imgFlags = IMG_INIT_PNG;
+		int imgFlags 					= IMG_INIT_PNG;
 		SDL_Event eve;
 		int action;
 		IMG_Init( imgFlags );
 		TTF_Init();
 		SDL_StartTextInput();
 
-		if(vuePrincipale == 0 && render ==0)
-		{
-			printf("\nImpossible d ouvrir la fenetre...");
-			exit(EXIT_FAILURE);
-		}
+		if(vuePrincipale == 0 && render ==0){ printf("\nImpossible d ouvrir la fenetre..."); exit(EXIT_FAILURE); }
 
 		SDL_SetRenderDrawColor(render, 255, 255, 255, 200); // COULEUR DU BACKGROUND
 		SDL_RenderClear(render);
@@ -70,43 +68,77 @@ void window_start()
 		char * t2 = "Lancer!";
 		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 150, 1900, BLACK);
 
-
 		SDL_RenderPresent(render);
 
 		while(keephere)
 		{
-
 			while (SDL_PollEvent(&eve)) //ATTENTE D EVENEMENTS
 			{
 				switch (eve.type)
 				{
 					case SDL_QUIT: //BOUTON FERMER
+
 						exit(0);
 					break;
-
 					case SDL_MOUSEBUTTONDOWN: // SOURIE
+
 						mouse( eve.button.x, eve.button.y, &action);
 						if(mouseIn( eve.button.x, eve.button.y, 0, 90, 0+150, 90+25 ))
 						{
-							//Cactive = &Ce1;
+							Eactive = 1;
 							puts("active: e1");
 						}
 						else if(mouseIn( eve.button.x, eve.button.y, 0, 130, 150, 130+25 ))
 						{
-							//Cactive = &Ce2;
+							//e_active = 2;
 							puts("active: e2");
 						}
-					break;
-
+					break
 					case SDL_KEYDOWN:		//TOUCHE CLAVIER
+
 						switch (eve.key.keysym.sym)
 						{
 							case SDLK_ESCAPE:
+
 								keephere = false;
+							break;
+							case SDLK_KP_0:
+
+								puts("0");
+								//strcat( ((e_active==1)? *Ce1 : *Ce2), "0" );
+							break;
+							case SDLK_KP_1:
+
+								puts("1");
+							break;
+							case SDLK_KP_2:
+								puts("2");
+							break;
+							case SDLK_KP_3:
+								puts("3");
+							break;
+							case SDLK_KP_4:
+								puts("4");
+							break;
+							case SDLK_KP_5:
+								puts("5");
+							break;
+							case SDLK_KP_6:
+								puts("6");
+							break;
+							case SDLK_KP_7:
+								puts("7");
+							break;
+							case SDLK_KP_8:
+								puts("8");
+							break;
+							case SDLK_KP_9:
+								puts("9");
+							break;
 						}
             		break;
 				}
-				if(action ==1)
+				if(action == 1)
 				{
 					startDraw(render, tx, ty, tz, ttr, nb_point);
 					action = 0;
@@ -119,11 +151,6 @@ void window_start()
 		SDL_Quit();
 	}
 }
-
-
-
-
-
 
 
 void dessinTraceZone(SDL_Renderer * ren)
@@ -147,16 +174,12 @@ void dessinTraceZone(SDL_Renderer * ren)
 }
 
 
-
-
-
 void dessinNumberZone(SDL_Renderer * ren, int x, int y)
 {
 	int colr, colg, colb;
   	SDL_Rect r;
   	int width 	= 150;
 	int height 	= 25;
-
 
   	SDL_SetRenderDrawBlendMode(ren,SDL_BLENDMODE_BLEND);
 	r.w = width;
@@ -166,11 +189,7 @@ void dessinNumberZone(SDL_Renderer * ren, int x, int y)
 
 	SDL_SetRenderDrawColor( ren, 10, 10, 10, 20);
 	SDL_RenderFillRect(ren, &r);
-
-  	//SDL_RenderPresent(ren);
 }
-
-
 
 
 void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
