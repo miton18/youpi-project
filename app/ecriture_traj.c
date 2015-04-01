@@ -2,13 +2,18 @@
    Auteur : Collignon Rémi
    			Morvan Guy-Yann
    	Fonction ecritureTraj
+   	Ecriture de la trajectoire dans le fichier trajectoire.dat
    	-----------------------------------------------------*/
 #include "ecriture_traj.h"
 
 /**
-	*
-	*
-	*
+	* fonction ecritureTraj
+	* parametre : float* tt1 , tableau contenant les angles du moteur 1
+	*             float* tt2 , tableau contenant les angles du moteur 2 
+	*			  float* tt3 , tableau contenant les angles du moteur 3
+	*			  float* ttr , tableau contenant la trace
+	*			  int np, contient le nombre de point total
+	* retourne void
 */
 void ecritureTraj(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 {
