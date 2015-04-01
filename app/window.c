@@ -93,7 +93,7 @@ void window_start()
 							//e_active = 2;
 							puts("active: e2");
 						}
-					break
+					break;
 					case SDL_KEYDOWN:		//TOUCHE CLAVIER
 
 						switch (eve.key.keysym.sym)
