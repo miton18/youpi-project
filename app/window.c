@@ -85,7 +85,7 @@ void window_start()
 						mouse( eve.button.x, eve.button.y, &action);
 						if(mouseIn( eve.button.x, eve.button.y, 0, 90, 0+150, 90+25 ))
 						{
-							Eactive = 1;
+							//Eactive = 1;
 							puts("active: e1");
 						}
 						else if(mouseIn( eve.button.x, eve.button.y, 0, 130, 150, 130+25 ))
