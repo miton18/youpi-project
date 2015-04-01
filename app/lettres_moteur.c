@@ -1,3 +1,9 @@
+/* ------------------------------------------------------
+   Auteur : Collignon Rémi
+   			Morvan Guy-Yann
+   	Fonction lettres_moteur
+   	Envoià la liaison USB les commandes moteur
+   	-----------------------------------------------------*/
 #include "lettres_moteur.h"
 
 /**
@@ -38,7 +44,7 @@ void lettresMoteur(float* tt1, float* tt2, float* tt3, int* ttr, int np)
 		}
 		else
 		{
-			printf("Connexion au peripheriques USB reussie.\n");// ON EST CONNECTER*/
+			printf("Connexion au peripheriques USB reussie.\n");// ON EST CONNECTE*/
 
 			//TRAME DE DEBUT
 
@@ -142,7 +148,7 @@ void createTrame( char * trame, float cpt , float ang_dest, int nMot )
 /**
 	* Converti un int en (char *)
 	* @param str: chaine de caracteres de destination
-	  @param value: entier a convertir
+	* @param value: entier a convertir
 	* @return void
 */
 void toStr(char *str, int value)

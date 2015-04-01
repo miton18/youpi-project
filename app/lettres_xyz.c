@@ -7,6 +7,15 @@
 
 #include "lettres_xyz.h"
 
+      /*Fonction lettresXYZ
+      paramètre : char* str:chaine contenant les chiffres romains
+                  float* tx: tableau de float contenant les coordonnées x
+                  float* ty: tableau de float contenant les coordonnées y
+                  float* tz: tableau de float contenant les coordonnées z
+                  int* ttr : tableau de int contenant l'information de tracage
+                  int* np : pointeur vers le nombre de points
+      retour : void
+      */
    	void lettresXYZ(char* str, float* tx, float* ty,float* tz,int* ttr,int* np){
          char temp;
          int nptemp=0;
@@ -53,11 +62,19 @@
    		}
    	}
 
+      /*Fonction lettresX
+      paramètre : float* x, tableau de float contenant les coordonnées x
+                  float* y, tableau de float contenant les coordonnées y
+                  float* z, tableau de float contenant les coordonnées z
+                  int* tr , tableau de int contenant l'information de tracage
+                  int i, indice dans la chaine de caractère str
+                  int* indice, indice dans les tableaux 
+      retour : int nbp , pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un X 
+      */
    	int lettreX(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=202;
          float pas = 9*2/((float) nbp-2);
-/*         float hypo=sqrt(pow(9,2)+pow(11,2));
-         float pas=hypo*2/((float)nbp);*/
          float j;
          int trace = 1;
          //tracé points deuxieme diagonale
@@ -105,6 +122,16 @@
 
    	}
 
+      /*Fonction lettresI
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un I
+      */
       int lettreI(float* x, float* y,float* z,int* tr,int i,int* indiceTableau){
          int nbp=150;
          float pas = (11+9*2)/((float)nbp);
@@ -161,6 +188,16 @@
          return nbp;
       }
 
+      /*Fonction lettresM
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un M
+      */
       int lettreM(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
 /*         float hypo = sqrt(pow(11,2)+pow(4.5,2));
@@ -214,6 +251,16 @@
          return nbp;
       }
 
+      /*Fonction lettresV
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un V
+      */
       int lettreV(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
 /*         float hypo = sqrt(pow(11,2)+pow(4.5,2));
@@ -250,6 +297,17 @@
          return nbp;
       }
 
+      /*Fonction lettresC
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+
+      Genère des coordonnées de points pour former un C
+      */
       int lettreC(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
          float j;
@@ -273,6 +331,16 @@
          return nbp;
       }
 
+      /*Fonction lettreD
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un D
+      */
       int lettreD(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=200;
          float j;
@@ -307,6 +375,17 @@
          return nbp;
       }
 
+
+      /*Fonction lettresL
+      paramètre : float* x: tableau de float contenant les coordonnées x
+                  float* y: tableau de float contenant les coordonnées y
+                  float* z: tableau de float contenant les coordonnées z
+                  int* tr : tableau de int contenant l'information de tracage
+                  int i: indice dans la chaine de caractère str
+                  int* indice: indice dans les tableaux 
+      retour : int nbp : pointeur vers le nombre de points
+      Genère des coordonnées de points pour former un L
+      */
       int lettreL(float* x, float* y,float* z,int* tr,int i,int* indice){
          int nbp=202;
          float pas = (9+11)/((float)nbp);

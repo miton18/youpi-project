@@ -2,10 +2,16 @@
    Auteur : Collignon Rémi
    			Morvan Guy-Yann
    	Fonction ihm
+   	Interface Homme Machine
    	Demande à l'utilisateur de rentrer 2 chiffres
    	-----------------------------------------------------*/
 #include "ihm.h"
 
+/* Fonction ihm
+   Parametre : int e1 , premier chiffre demmandé de rentrer à l'utilisateur (sortie)
+   			   int e2 , deuxième chiffre demandé de rentrer à l'utilisateur (sortie)
+  	retourne void
+*/
 void ihm(int* e1, int* e2)
 {
 	char number[5];
@@ -56,10 +62,21 @@ void ihm(int* e1, int* e2)
 	printf("\n calcul %d + %d \n\n", *e1, *e2);
 	line();
 }
+/* Fonction line
+	parametre : aucun
+	retourne void
+	affiche une ligne de #
+*/
 void line()
 {
 	printf("###################################################################################\n");
 }
+
+/* Fonction robot
+	parametre : aucun
+	retourne void
+	Affiche un robot en ascii
+*/
 void robot() {
 puts("                                         __-----__");
 puts("                                        / \\_____/ \\ ");

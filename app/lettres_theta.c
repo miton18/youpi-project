@@ -2,11 +2,20 @@
    Auteur : Collignon Rémi
    			Morvan Guy-Yann
    	Header Fonction lettresTheta
+   	Conversion en angles
  -----------------------------------------------------*/
 
 #include "lettres_theta.h"
 
-
+/* Fonction lettresTheta
+   parametre : float* tx , tableau contenant les coordonnées x
+   			   float* ty , tableau contenant les coordonnées y
+   			   float* tz , tableau contenant les coordonnées z
+   			   int np , nombre de points total
+   			   float* tt1 , tableau contenant les angles theta1(sortie)
+   			   float* tt2 , tableau contenant les angles theta2(sortie)
+   			   float* tt3 , tableau contenant les angles theta3(sortie)
+*/
 void lettresTheta(float* tx, float* ty, float* tz, int np, float* tt1, float* tt2, float* tt3)
 {
 	int i;
