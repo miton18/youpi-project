@@ -25,7 +25,7 @@
 	#include "ecriture_traj.h"
 
 	#define HEIGHT 500
-	#define WIDTH 500
+	#define WIDTH  1200
 
 	#define BLACK 1
 	#define WHITE 1

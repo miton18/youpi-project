@@ -14,15 +14,11 @@ void window_start()
 	float * tt2 = malloc( sizeof(float) * 400 * 16 ); //nombre de point Max x taille float x nombre de caractere max
 	float * tt3 = malloc( sizeof(float) * 400 * 16 );
 
-
 	ihm(&e1, &e2);
 	str = conversion( calcul(e1,e2) );
 	lettresXYZ(    str, tx,  ty,  tz, 		ttr, 		&nb_point);
 	lettresTheta(  tx,  ty,  tz,  nb_point, 	tt1, 		tt2, 		tt3);
 	ecritureTraj(  tt1, tt2, tt3, ttr, 		nb_point);
-
-
-
 
 	bool keephere = true;
 
@@ -69,7 +65,7 @@ void window_start()
 		char * t1 = "Youpi: addition";
 		dessinTexte( render, t1, 16, 18, 400, BLACK);
 		char * t2 = "Lancer!";
-		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 60, 400, BLACK);
+		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 150, 400, BLACK);
 
 
 		SDL_RenderPresent(render);
@@ -102,7 +98,6 @@ void window_start()
 				{
 					startDraw(render, tx, ty, tz, ttr, nb_point);
 					action = 0;
-					SDL_RenderPresent(render);
 				}
 			}
 		}
@@ -123,8 +118,8 @@ void dessinTraceZone(SDL_Renderer * ren)
 {
 	int colr, colg, colb;
   	SDL_Rect r;
-  	int width 	= 300;
-	int height 	= 100;
+  	int width 	= WIDTH;
+	int height 	= 150;
 
 
   	SDL_SetRenderDrawBlendMode(ren,SDL_BLENDMODE_BLEND);
@@ -229,7 +224,7 @@ void mouse( int x, int y, int * action )
 	{
 		exit(0);
 	}
-	else if(mouseIn( x, y,  20, ( HEIGHT / 2 ) + 60, 80+20, ( HEIGHT / 2 ) + 60 +25 ) )
+	else if(mouseIn( x, y,  20, ( HEIGHT / 2 ) + 150, 80+20, ( HEIGHT / 2 ) + 150 +25 ) )
 	{
 		puts("lancer...\n");
 		*action = 1;
@@ -238,10 +233,10 @@ void mouse( int x, int y, int * action )
 	{
 
 	}
-	else if(mouseIn(x, y, 20, ( HEIGHT / 2 ) + 60, 100, ( HEIGHT / 2 ) + 60 + 25))
+	/*else if(mouseIn(x, y, 20, ( HEIGHT / 2 ) + 150, 100, ( HEIGHT / 2 ) + 150 + 25))
 	{
 
-	}
+	}*/
 }
 
 
@@ -268,19 +263,20 @@ bool mouseIn( int mx, int my, int fxa, int fya, int fxb, int fyb)
 void startDraw(	SDL_Renderer * ren, float * tx, float * ty, float * tz, int * ttr, int nb_point) // z horizontal, x verticale
 {
 	int i, x, y;
-	puts("ca trace!");
+	char * load = malloc(sizeof(char) * 6);
 	SDL_SetRenderDrawColor( ren, 10, 10, 10, 255);
-	/*SDL_RenderDrawPoint(ren, 250, 250 );
-	SDL_RenderDrawPoint(ren, 251, 251 );
-	SDL_RenderDrawPoint(ren, 252, 252 );*/
 
 	for( i=0; i< nb_point; i++)
 		//printf("point: %f, %f\n", tz[i] + 139.5, 		tx[i] - 145 );
 	{
-		x = ((tz[i])  + 139.5) * 7 ;
-		y = ( -(tx[i] - 145  ) * 7 + (     ( HEIGHT / 2 ) )    );
-
-		printf("point: %d, %d\n", x, y);
+		x = ((tz[i])  + 139.5) * 6 +20 ;
+		y = ( -(tx[i] - 145  ) * 6 + (     ( HEIGHT / 2 ) + 30 )    );
+		Sleep(10);
+		//printf("point: %d, %d\n", x, y);
 		SDL_RenderDrawPoint(ren, x, y );
+
+		dessinTexte( ren, load, WIDTH / 2 - 80, HEIGHT - 50, 45, RED);
+
+		SDL_RenderPresent(ren);
 	}
 }
