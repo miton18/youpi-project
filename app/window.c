@@ -4,6 +4,8 @@ void window_start()
 	//TEMPORAIRE
 	char  * str;
 	int nb_point, e1, e2;
+	char  * Ce1, Ce2;
+	char  ** Cactive;
 	float * tx  = malloc( sizeof(float) * 400 * 16 ); //TABLEAUX DE POSITIONS X Y Z
 	float * ty  = malloc( sizeof(float) * 400 * 16 );
 	float * tz  = malloc( sizeof(float) * 400 * 16 );
@@ -34,9 +36,10 @@ void window_start()
     	vuePrincipale 					= SDL_CreateWindowAndRenderer( WIDTH, HEIGHT, SDL_WINDOW_BORDERLESS, &vuePrincipale, &render );
 		int imgFlags = IMG_INIT_PNG;
 		SDL_Event eve;
+		int action;
 		IMG_Init( imgFlags );
 		TTF_Init();
-		int action;
+		SDL_StartTextInput();
 
 		if(vuePrincipale == 0 && render ==0)
 		{
@@ -63,9 +66,9 @@ void window_start()
 		dessinButton( 		render, buttonV, 10, 10);
 
 		char * t1 = "Youpi: addition";
-		dessinTexte( render, t1, 16, 18, 400, WHITE);
+		dessinTexte( render, t1, 16, 18, 600, WHITE);
 		char * t2 = "Lancer!";
-		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 150, 400, BLACK);
+		dessinTexte( render, t2, 20, ( HEIGHT / 2 ) + 150, 1900, BLACK);
 
 
 		SDL_RenderPresent(render);
@@ -83,7 +86,16 @@ void window_start()
 
 					case SDL_MOUSEBUTTONDOWN: // SOURIE
 						mouse( eve.button.x, eve.button.y, &action);
-
+						if(mouseIn( eve.button.x, eve.button.y, 0, 90, 0+150, 90+25 ))
+						{
+							//Cactive = &Ce1;
+							puts("active: e1");
+						}
+						else if(mouseIn( eve.button.x, eve.button.y, 0, 130, 150, 130+25 ))
+						{
+							//Cactive = &Ce2;
+							puts("active: e2");
+						}
 					break;
 
 					case SDL_KEYDOWN:		//TOUCHE CLAVIER
@@ -186,9 +198,10 @@ void dessinButton( SDL_Renderer * ren, SDL_Texture * Text, int x, int y)
 void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int color)
 {
 	SDL_Color Tcolor;
-	SDL_Color color_white = {   5,  5,  5 };
-	SDL_Color color_black = { 255,255,255 };
-	SDL_Color color_red   = { 255,  5,  5 };
+	SDL_Color color_white = {   5,  5,   5 };
+	SDL_Color color_black = { 255,255, 255 };
+	SDL_Color color_red   = { 255,  5,   5 };
+	SDL_Color color_grey  = { 181,  0, 128 };
 	if( color == WHITE)
 	{
 		Tcolor = color_black;
@@ -201,7 +214,7 @@ void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int co
 	{
 		Tcolor = color_red;
 	}
-	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Condensed.ttf", size);
+	TTF_Font 	* 	font  = TTF_OpenFont("font/Roboto-Regular.ttf", size);
 
 	SDL_Rect R;
 		R.x = x;
@@ -210,6 +223,7 @@ void dessinTexte( SDL_Renderer * ren, char * txt, int x, int y, int size, int co
 		R.h = 25;
 
 	SDL_Surface * texte  = TTF_RenderText_Blended( font, txt, Tcolor);
+	//SDL_Surface * texte  = TTF_RenderText_Shaded( font, txt, Tcolor, color_grey);
 	SDL_Texture * Ttexte = SDL_CreateTextureFromSurface(ren, texte);
 	SDL_RenderCopy(ren, Ttexte, NULL, &R);
 
@@ -234,14 +248,6 @@ void mouse( int x, int y, int * action )
 		puts("lancer...\n");
 		*action = 1;
 	}
-	else if(mouseIn(x, y, 0, 90, 150, 90+25))// zone de texte du nombre
-	{
-
-	}
-	/*else if(mouseIn(x, y, 20, ( HEIGHT / 2 ) + 150, 100, ( HEIGHT / 2 ) + 150 + 25))
-	{
-
-	}*/
 }
 
 
@@ -273,7 +279,6 @@ void startDraw(	SDL_Renderer * ren, float * tx, float * ty, float * tz, int * tt
 	dessinTexte( ren, wait, 80, HEIGHT - 50, 400, RED);
 
 	for( i=0; i< nb_point; i++)
-		//printf("point: %f, %f\n", tz[i] + 139.5, 		tx[i] - 145 );
 	{
 		x = ((tz[i])  + 139.5) * 6 +20 ;
 		y = ( -(tx[i] - 145  ) * 6 + (     ( HEIGHT / 2 ) + 30 )    );
